@@ -211,7 +211,7 @@
     <value>Permanently removing Firewall Rule '{0}' for Azure Sql Database Server '{1}'.</value>
   </data>
   <data name="RemoveAzureSqlServerFirewallRuleWarning" xml:space="preserve">
-    <value>Are you sure you want to remove the Firewall Rule '{0}' for Azure Sql Database Server  '{1}'?</value>
+    <value>Are you sure you want to remove the Firewall Rule '{0}' for Azure Sql Database Server '{1}'?</value>
   </data>
   <data name="RemoveAzureSqlServerWarning" xml:space="preserve">
     <value>Are you sure you want to remove the Azure Sql Database Server '{0}'?</value>
@@ -287,5 +287,14 @@
   </data>
   <data name="InvalidExcludedDetectionTypeSet" xml:space="preserve">
     <value>Cannot use the '{0}' option with other excluded detection types.</value>
+  </data>
+  <data name="JobAccountNameExists" xml:space="preserve">
+    <value>Job account with name: '{0}' already exists in server '{1}'.</value>
+  </data>
+  <data name="RemoveAzureSqlJobAccountDescription" xml:space="preserve">
+    <value>Permanently removing job account '{0}' for Azure Sql Database Server '{1}'.</value>
+  </data>
+  <data name="RemoveAzureSqlJobAccountWarning" xml:space="preserve">
+    <value>Are you sure you want to remove the job account '{0}' for Azure Sql Database Server '{1}'?</value>
   </data>
 </root>
