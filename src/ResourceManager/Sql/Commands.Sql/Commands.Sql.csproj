@@ -196,6 +196,13 @@
     <Compile Include="ServerDnsAlias\Cmdlet\NewAzureSqlServerDnsAlias.cs" />
     <Compile Include="ServerDnsAlias\Services\AzureSqlServerDnsAliasAdapter.cs" />
     <Compile Include="ServerDnsAlias\Services\AzureSqlServerDnsAliasCommunicator.cs" />
+    <Compile Include="JobAccount\Cmdlet\AzureSqlJobAccountCmdletBase.cs" />
+    <Compile Include="JobAccount\Cmdlet\GetAzureSqlJobAccount.cs" />
+    <Compile Include="JobAccount\Cmdlet\NewAzureSqlJobAccount.cs" />
+    <Compile Include="JobAccount\Cmdlet\RemoveAzureSqlJobAccount.cs" />
+    <Compile Include="JobAccount\Model\AzureSqlJobAccountModel.cs" />
+    <Compile Include="JobAccount\Services\AzureSqlJobAccountAdapter.cs" />
+    <Compile Include="JobAccount\Services\AzureSqlJobAccountCommunicator.cs" />
     <Compile Include="ThreatDetection\Cmdlet\GetAzureSqlServerThreatDetection.cs" />
     <Compile Include="ThreatDetection\Cmdlet\RemoveSqlServerThreatDetection.cs" />
     <Compile Include="ThreatDetection\Cmdlet\SetAzureSqlServerThreatDetection.cs" />
