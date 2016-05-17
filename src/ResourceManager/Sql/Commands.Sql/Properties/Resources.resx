@@ -214,7 +214,7 @@
     <value>Permanently removing Firewall Rule '{0}' for Azure Sql Database Server '{1}'.</value>
   </data>
   <data name="RemoveAzureSqlServerFirewallRuleWarning" xml:space="preserve">
-    <value>Are you sure you want to remove the Firewall Rule '{0}' for Azure Sql Database Server  '{1}'?</value>
+    <value>Are you sure you want to remove the Firewall Rule '{0}' for Azure Sql Database Server '{1}'?</value>
   </data>
   <data name="RemoveAzureSqlServerWarning" xml:space="preserve">
     <value>Are you sure you want to remove the Azure Sql Database Server '{0}'?</value>
@@ -309,6 +309,21 @@
   <data name="SetRecommendedActionStateWarning" xml:space="preserve">
     <value>Are you sure you want to update state of the recommended action '{0}' to '{1}'</value>
   </data>
+  <data name="JobAccountNameExists" xml:space="preserve">
+    <value>Job account with name: '{0}' already exists in server '{1}'.</value>
+  </data>
+  <data name="RemoveAzureSqlJobAccountDescription" xml:space="preserve">
+    <value>Permanently removing job account '{0}' for Azure Sql Database Server '{1}'.</value>
+  </data>
+  <data name="RemoveAzureSqlJobAccountWarning" xml:space="preserve">
+    <value>Are you sure you want to remove the job account '{0}' for Azure Sql Database Server '{1}'?</value>
+  </data>
+  <data name="ServerNotApplicableForJobAccount" xml:space="preserve">
+    <value>Job accounts are only available for the latest SQL Database Update (V12). Please upgrade the server '{0}' or choose a different server.</value>
+  </data>
+  <data name="NoStorageAccountWhenConfiguringThreatDetectionPolicy" xml:space="preserve">
+    <value>Cannot set threat detection policy without a storage account name.</value>
+  </data>  
   <data name="FailoverGroupNameExists" xml:space="preserve">
     <value>Failover Group with name: '{0}' already exists in server '{1}'.</value>
   </data>
