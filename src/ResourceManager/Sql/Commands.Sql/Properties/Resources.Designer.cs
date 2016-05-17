@@ -232,6 +232,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Job account with name: &apos;{0}&apos; already exists in server &apos;{1}&apos;..
+        /// </summary>
+        internal static string JobAccountNameExists {
+            get {
+                return ResourceManager.GetString("JobAccountNameExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You need to provide at least one email address or set EmailAdmins to True..
         /// </summary>
         internal static string NeedToProvideEmail {
@@ -313,6 +322,24 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Permanently removing job account &apos;{0}&apos; for Azure Sql Database Server &apos;{1}&apos;..
+        /// </summary>
+        internal static string RemoveAzureSqlJobAccountDescription {
+            get {
+                return ResourceManager.GetString("RemoveAzureSqlJobAccountDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove the job account &apos;{0}&apos; for Azure Sql Database Server &apos;{1}&apos;?.
+        /// </summary>
+        internal static string RemoveAzureSqlJobAccountWarning {
+            get {
+                return ResourceManager.GetString("RemoveAzureSqlJobAccountWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Removing Azure Sql Server Active Directory Administrator on server &apos;{0}&apos;..
         /// </summary>
         internal static string RemoveAzureSqlServerActiveDirectoryAdministratorDescription {
@@ -385,7 +412,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to remove the Firewall Rule &apos;{0}&apos; for Azure Sql Database Server  &apos;{1}&apos;?.
+        ///   Looks up a localized string similar to Are you sure you want to remove the Firewall Rule &apos;{0}&apos; for Azure Sql Database Server &apos;{1}&apos;?.
         /// </summary>
         internal static string RemoveAzureSqlServerFirewallRuleWarning {
             get {
@@ -427,8 +454,8 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
             get {
                 return ResourceManager.GetString("ServerCommunicationLinkNameExists", resourceCulture);
             }
-        }        
-
+        }
+        
         /// <summary>
         ///   Looks up a localized string similar to Server Disaster Recovery Configuration already exists in server &apos;{1}&apos;..
         /// </summary>
@@ -495,13 +522,12 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         /// <summary>
         ///   Looks up a localized string similar to No Set Options were provided.
         /// </summary>
-        internal static string SetDisasterRecoveryConfigurationNoOptionProvided
-        {
+        internal static string SetDisasterRecoveryConfigurationNoOptionProvided {
             get {
                 return ResourceManager.GetString("SetDisasterRecoveryConfigurationNoOptionProvided", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to No Set Options were provided.
         /// </summary>
