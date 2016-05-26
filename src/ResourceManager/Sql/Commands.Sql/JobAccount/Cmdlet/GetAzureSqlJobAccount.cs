@@ -50,21 +50,19 @@ namespace Microsoft.Azure.Commands.Sql.JobAccount.Cmdlet
         /// <returns>A single server</returns>
         protected override IEnumerable<AzureSqlJobAccountModel> GetEntity()
         {
-            ICollection<AzureSqlJobAccountModel> results = null;
+            ModelAdapter.ThrowIfJobAccountNotSupportedByServer(this.ResourceGroupName, this.ServerName, this.clientRequestId);
 
             if (this.MyInvocation.BoundParameters.ContainsKey("JobAccountName"))
             {
-                results = new List<AzureSqlJobAccountModel>
+                return new List<AzureSqlJobAccountModel>
                 {
-                    ModelAdapter.GetJobAccount(this.ResourceGroupName, this.ServerName, this.JobAccountName)
+                    ModelAdapter.GetJobAccount(this.ResourceGroupName, this.ServerName, this.JobAccountName, this.clientRequestId)
                 };
             }
             else
             {
-                results = ModelAdapter.GetJobAccount(this.ResourceGroupName, this.ServerName);
+                return ModelAdapter.GetJobAccount(this.ResourceGroupName, this.ServerName, this.clientRequestId);
             }
-
-            return results;
         }
 
         /// <summary>

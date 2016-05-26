@@ -61,9 +61,9 @@ namespace Microsoft.Azure.Commands.Sql.JobAccount.Cmdlet
         public Dictionary<string, string> Tags { get; set; }
 
         /// <summary>
-        /// Check to see if the server already exists in this resource group.
+        /// Check to see if the job account already exists in this resource group.
         /// </summary>
-        /// <returns>Null if the server doesn't exist.  Otherwise throws exception</returns>
+        /// <returns>Null if the job account doesn't exist. Otherwise throws exception</returns>
         protected override IEnumerable<Model.AzureSqlJobAccountModel> GetEntity()
         {
             try
@@ -95,7 +95,8 @@ namespace Microsoft.Azure.Commands.Sql.JobAccount.Cmdlet
         /// <returns>The generated model from user input</returns>
         protected override IEnumerable<Model.AzureSqlJobAccountModel> ApplyUserInputToModel(IEnumerable<Model.AzureSqlJobAccountModel> model)
         {
-            string location = ModelAdapter.GetServerLocation(ResourceGroupName, ServerName);
+            string location = ModelAdapter.GetServerLocationAndThrowIfJobAccountNotSupportedByServer(this.ResourceGroupName, this.ServerName, this.clientRequestId);
+
             List<Model.AzureSqlJobAccountModel> newEntity = new List<Model.AzureSqlJobAccountModel>
             {
                 new Model.AzureSqlJobAccountModel
@@ -120,7 +121,7 @@ namespace Microsoft.Azure.Commands.Sql.JobAccount.Cmdlet
         {
             return new List<Model.AzureSqlJobAccountModel>
             {
-                ModelAdapter.UpsertJobAccount(entity.First())
+                ModelAdapter.UpsertJobAccount(entity.First(), this.clientRequestId)
             };
         }
     }

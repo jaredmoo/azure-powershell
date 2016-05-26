@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using System.Collections.Generic;
-using System.Security;
 
 namespace Microsoft.Azure.Commands.Sql.JobAccount.Model
 {
