@@ -23,6 +23,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Security;
 using System.Security.Permissions;
+using Microsoft.Azure.Commands.Sql.Server.Adapter;
 
 namespace Microsoft.Azure.Commands.Sql.JobAccount.Adapter
 {
@@ -140,25 +141,16 @@ namespace Microsoft.Azure.Commands.Sql.JobAccount.Adapter
         }
 
         /// <summary>
-        /// Convert a <see cref="System.Security.SecureString"/> to a plain-text string representation.
-        /// This should only be used in a proetected context, and must be done in the same logon and process context
-        /// in which the <see cref="System.Security.SecureString"/> was constructed.
+        /// Gets the Location of the server.
         /// </summary>
-        /// <param name="secureString">The encrypted <see cref="System.Security.SecureString"/>.</param>
-        /// <returns>The plain-text string representation.</returns>
-        [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
-        internal static string Decrypt(SecureString secureString)
+        /// <param name="resourceGroupName">The resource group the server is in</param>
+        /// <param name="serverName">The name of the server</param>
+        /// <returns></returns>
+        public string GetServerLocation(string resourceGroupName, string serverName)
         {
-            IntPtr unmanagedString = IntPtr.Zero;
-            try
-            {
-                unmanagedString = Marshal.SecureStringToGlobalAllocUnicode(secureString);
-                return Marshal.PtrToStringUni(unmanagedString);
-            }
-            finally
-            {
-                Marshal.ZeroFreeGlobalAllocUnicode(unmanagedString);
-            }
+            AzureSqlServerAdapter serverAdapter = new AzureSqlServerAdapter(Context);
+            var server = serverAdapter.GetServer(resourceGroupName, serverName);
+            return server.Location;
         }
     }
 }
