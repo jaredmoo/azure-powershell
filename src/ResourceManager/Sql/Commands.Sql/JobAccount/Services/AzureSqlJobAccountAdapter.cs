@@ -15,15 +15,11 @@
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.JobAccount.Model;
 using Microsoft.Azure.Commands.Sql.JobAccount.Services;
-using Microsoft.Azure.Commands.Sql.Services;
 using Microsoft.Azure.Management.Sql.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.InteropServices;
-using System.Security;
-using System.Security.Permissions;
-using Microsoft.Azure.Commands.Sql.Server.Adapter;
+using Microsoft.Azure.Commands.Sql.Server.Services;
 
 namespace Microsoft.Azure.Commands.Sql.JobAccount.Adapter
 {
@@ -58,10 +54,13 @@ namespace Microsoft.Azure.Commands.Sql.JobAccount.Adapter
         /// <param name="resourceGroupName">The name of the resource group</param>
         /// <param name="serverName">The server the job account is in</param>
         /// <param name="jobAccountName">Name of the job account.</param>
-        /// <returns>The job account</returns>
-        public AzureSqlJobAccountModel GetJobAccount(string resourceGroupName, string serverName, string jobAccountName)
+        /// <param name="clientId">The client identifier.</param>
+        /// <returns>
+        /// The job account
+        /// </returns>
+        public AzureSqlJobAccountModel GetJobAccount(string resourceGroupName, string serverName, string jobAccountName, string clientId)
         {
-            var resp = Communicator.Get(resourceGroupName, serverName, jobAccountName, Util.GenerateTracingId());
+            var resp = Communicator.Get(resourceGroupName, serverName, jobAccountName, clientId);
             return CreateJobAccountModelFromResponse(resourceGroupName, serverName, resp);
         }
 
@@ -70,10 +69,13 @@ namespace Microsoft.Azure.Commands.Sql.JobAccount.Adapter
         /// </summary>
         /// <param name="resourceGroupName">The name of the resource group</param>
         /// <param name="serverName">The server the job account is in</param>
-        /// <returns>A list of all the job account</returns>
-        public List<AzureSqlJobAccountModel> GetJobAccount(string resourceGroupName, string serverName)
+        /// <param name="clientId">The client identifier.</param>
+        /// <returns>
+        /// A list of all the job account
+        /// </returns>
+        public List<AzureSqlJobAccountModel> GetJobAccount(string resourceGroupName, string serverName, string clientId)
         {
-            var resp = Communicator.List(resourceGroupName, serverName, Util.GenerateTracingId());
+            var resp = Communicator.List(resourceGroupName, serverName, clientId);
             return resp.Select(s => CreateJobAccountModelFromResponse(resourceGroupName, serverName, s)).ToList();
         }
 
@@ -81,8 +83,11 @@ namespace Microsoft.Azure.Commands.Sql.JobAccount.Adapter
         /// Upserts a server
         /// </summary>
         /// <param name="model">The server to upsert</param>
-        /// <returns>The updated server model</returns>
-        public AzureSqlJobAccountModel UpsertJobAccount(AzureSqlJobAccountModel model)
+        /// <param name="clientId">The client identifier.</param>
+        /// <returns>
+        /// The updated server model
+        /// </returns>
+        public AzureSqlJobAccountModel UpsertJobAccount(AzureSqlJobAccountModel model, string clientId)
         {
             // Construct database id
             string databaseId = string.Format("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Sql/servers/{2}/databases/{3}",
@@ -91,7 +96,7 @@ namespace Microsoft.Azure.Commands.Sql.JobAccount.Adapter
                 model.ServerName,
                 model.DatabaseName);
 
-            var resp = Communicator.CreateOrUpdate(model.ResourceGroupName, model.ServerName, model.JobAccountName, Util.GenerateTracingId(), new JobAccountCreateOrUpdateParameters
+            var resp = Communicator.CreateOrUpdate(model.ResourceGroupName, model.ServerName, model.JobAccountName, clientId, new JobAccountCreateOrUpdateParameters
             {
                 Location = model.Location,
                 Tags = model.Tags,
@@ -110,9 +115,10 @@ namespace Microsoft.Azure.Commands.Sql.JobAccount.Adapter
         /// <param name="resourceGroupName">The resource group the server is in</param>
         /// <param name="serverName">The server the job account is in</param>
         /// <param name="jobAccountName">Name of the job account to delete.</param>
-        public void RemoveJobAccount(string resourceGroupName, string serverName, string jobAccountName)
+        /// <param name="clientId">The client identifier.</param>
+        public void RemoveJobAccount(string resourceGroupName, string serverName, string jobAccountName, string clientId)
         {
-            Communicator.Remove(resourceGroupName, serverName, jobAccountName, Util.GenerateTracingId());
+            Communicator.Remove(resourceGroupName, serverName, jobAccountName, clientId);
         }
 
         /// <summary>
@@ -129,28 +135,57 @@ namespace Microsoft.Azure.Commands.Sql.JobAccount.Adapter
             int lastSlashIndex = resp.Properties.DatabaseId.LastIndexOf('/');
             string databaseName = resp.Properties.DatabaseId.Substring(lastSlashIndex + 1);
 
-            AzureSqlJobAccountModel jobAccount = new AzureSqlJobAccountModel();
-
-            jobAccount.ResourceGroupName = resourceGroupName;
-            jobAccount.ServerName = serverName;
-            jobAccount.JobAccountName = resp.Name;
-            jobAccount.Location = resp.Location;
-            jobAccount.DatabaseName = databaseName;
+            AzureSqlJobAccountModel jobAccount = new AzureSqlJobAccountModel
+            {
+                ResourceGroupName = resourceGroupName,
+                ServerName = serverName,
+                JobAccountName = resp.Name,
+                Location = resp.Location,
+                DatabaseName = databaseName
+            };
 
             return jobAccount;
         }
 
         /// <summary>
-        /// Gets the Location of the server.
+        /// Gets the Location of the server. Throws an exception if the server does not support job accounts.
         /// </summary>
         /// <param name="resourceGroupName">The resource group the server is in</param>
         /// <param name="serverName">The name of the server</param>
+        /// <param name="clientId">The client identifier.</param>
         /// <returns></returns>
-        public string GetServerLocation(string resourceGroupName, string serverName)
+        /// <remarks>
+        /// These 2 operations (get location, throw if not supported) are combined in order to minimize round trips.
+        /// </remarks>
+        public string GetServerLocationAndThrowIfJobAccountNotSupportedByServer(string resourceGroupName, string serverName, string clientId)
         {
-            AzureSqlServerAdapter serverAdapter = new AzureSqlServerAdapter(Context);
-            var server = serverAdapter.GetServer(resourceGroupName, serverName);
+            AzureSqlServerCommunicator serverCommunicator = new AzureSqlServerCommunicator(Context);
+            var server = serverCommunicator.Get(resourceGroupName, serverName, clientId);
+
+            ThrowIfJobAccountNotSupportedByServer(server);
+
             return server.Location;
+        }
+
+        /// <summary>
+        /// Throws an exception if the server does not support job accounts.
+        /// </summary>
+        public void ThrowIfJobAccountNotSupportedByServer(string resourceGroupName, string serverName, string clientId)
+        {
+            AzureSqlServerCommunicator serverCommunicator = new AzureSqlServerCommunicator(Context);
+            Management.Sql.Models.Server server = serverCommunicator.Get(resourceGroupName, serverName, clientId);
+            ThrowIfJobAccountNotSupportedByServer(server);
+        }
+
+        /// <summary>
+        /// Throws an exception if the server does not support job accounts.
+        /// </summary>
+        private static void ThrowIfJobAccountNotSupportedByServer(Management.Sql.Models.Server server)
+        {
+            if (server.Properties.Version != "12.0")
+            {
+                throw new InvalidOperationException(string.Format(Properties.Resources.ServerNotApplicableForJobAccount, server.Name));
+            }
         }
     }
 }

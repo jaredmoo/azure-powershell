@@ -493,6 +493,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Job accounts are only available for the latest SQL Database Update (V12). Please upgrade the server &apos;{0}&apos; or choose a different server..
+        /// </summary>
+        internal static string ServerNotApplicableForJobAccount {
+            get {
+                return ResourceManager.GetString("ServerNotApplicableForJobAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Threat detection is only available for the latest SQL Database Update (V12). Please upgrade to set it up on your database..
         /// </summary>
         internal static string ServerNotApplicableForThreatDetection {
