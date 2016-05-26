@@ -54,15 +54,6 @@ namespace Microsoft.Azure.Commands.Sql.JobAccount.Cmdlet
         public string DatabaseName { get; set; }
 
         /// <summary>
-        /// The location in which to create the server
-        /// </summary>
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The location in which to create the job account")]
-        [ValidateNotNullOrEmpty]
-        public string Location { get; set; }
-
-        /// <summary>
         /// The tags to associate with the Azure Sql Database Server
         /// </summary>
         [Parameter(Mandatory = false,
@@ -104,11 +95,12 @@ namespace Microsoft.Azure.Commands.Sql.JobAccount.Cmdlet
         /// <returns>The generated model from user input</returns>
         protected override IEnumerable<Model.AzureSqlJobAccountModel> ApplyUserInputToModel(IEnumerable<Model.AzureSqlJobAccountModel> model)
         {
+            string location = ModelAdapter.GetServerLocation(ResourceGroupName, ServerName);
             List<Model.AzureSqlJobAccountModel> newEntity = new List<Model.AzureSqlJobAccountModel>
             {
                 new Model.AzureSqlJobAccountModel
                 {
-                    Location = this.Location,
+                    Location = location,
                     ResourceGroupName = this.ResourceGroupName,
                     ServerName = this.ServerName,
                     JobAccountName = this.JobAccountName,
