@@ -318,6 +318,9 @@
   <data name="RemoveAzureSqlJobAccountWarning" xml:space="preserve">
     <value>Are you sure you want to remove the job account '{0}' for Azure Sql Database Server '{1}'?</value>
   </data>
+  <data name="ServerNotApplicableForJobAccount" xml:space="preserve">
+    <value>Job accounts are only available for the latest SQL Database Update (V12). Please upgrade the server '{0}' or choose a different server.</value>
+  </data>
   <data name="NoStorageAccountWhenConfiguringThreatDetectionPolicy" xml:space="preserve">
     <value>Cannot set threat detection policy without a storage account name.</value>
   </data>  
