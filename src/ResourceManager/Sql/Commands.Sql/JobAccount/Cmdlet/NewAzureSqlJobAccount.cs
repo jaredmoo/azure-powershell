@@ -68,13 +68,14 @@ namespace Microsoft.Azure.Commands.Sql.JobAccount.Cmdlet
         {
             try
             {
-                ModelAdapter.GetJobAccount(this.ResourceGroupName, this.ServerName, this.JobAccountName);
+                WriteDebugWithTimestamp("JobAccountName: {0}", JobAccountName);
+                ModelAdapter.GetJobAccount(this.ResourceGroupName, this.ServerName, this.JobAccountName, this.clientRequestId);
             }
             catch (CloudException ex)
             {
                 if (ex.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
                 {
-                    // This is what we want.  We looked and there is no server with this name.
+                    // This is what we want.  We looked and there is no job account with this name.
                     return null;
                 }
 
