@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Sql.JobAccount.Cmdlet
     /// Defines the Get-AzureRmSqlJobAccount cmdlet
     /// </summary>
     [Cmdlet(VerbsCommon.New, "AzureRmSqlJobAccount",
-        ConfirmImpact = ConfirmImpact.Low)]
+        ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true)]
     public class NewAzureSqlJobAccount : AzureSqlJobAccountCmdletBase
     {
         /// <summary>
