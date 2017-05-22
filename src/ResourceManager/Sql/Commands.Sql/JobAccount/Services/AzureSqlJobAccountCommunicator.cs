@@ -13,10 +13,10 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Sql.Common;
-using Microsoft.Azure.Management.Sql;
-using Microsoft.Azure.Management.Sql.Models;
+using Microsoft.Azure.Management.Sql.LegacySdk;
+using Microsoft.Azure.Management.Sql.LegacySdk.Models;
 using System;
 using System.Collections.Generic;
 
@@ -35,18 +35,18 @@ namespace Microsoft.Azure.Commands.Sql.JobAccount.Services
         /// <summary>
         /// Gets or set the Azure subscription
         /// </summary>
-        internal static AzureSubscription Subscription { get; private set; }
+        internal static IAzureSubscription Subscription { get; private set; }
 
         /// <summary>
         /// Gets or sets the Azure profile
         /// </summary>
-        public AzureContext Context { get; set; }
+        public IAzureContext Context { get; set; }
 
         /// <summary>
         /// Creates a communicator for Azure Sql Job Accounts
         /// </summary>
         /// <param name="context">The context.</param>
-        public AzureSqlJobAccountCommunicator(AzureContext context)
+        public AzureSqlJobAccountCommunicator(IAzureContext context)
         {
             Context = context;
             if (context.Subscription != Subscription)
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.Sql.JobAccount.Services
         /// <summary>
         /// Gets the Azure Sql Database SErver
         /// </summary>
-        public Management.Sql.Models.JobAccount Get(string resourceGroupName, string serverName, string jobAccountName, string clientRequestId)
+        public Management.Sql.LegacySdk.Models.JobAccount Get(string resourceGroupName, string serverName, string jobAccountName, string clientRequestId)
         {
             return GetCurrentSqlClient(clientRequestId).JobAccounts.Get(resourceGroupName, serverName, jobAccountName).JobAccount;
         }
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.Sql.JobAccount.Services
         /// <summary>
         /// Lists Azure Sql Database Servers
         /// </summary>
-        public IList<Management.Sql.Models.JobAccount> List(string resourceGroupName, string serverName, string clientRequestId)
+        public IList<Management.Sql.LegacySdk.Models.JobAccount> List(string resourceGroupName, string serverName, string clientRequestId)
         {
             return GetCurrentSqlClient(clientRequestId).JobAccounts.List(resourceGroupName, serverName).JobAccounts;
         }
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.Sql.JobAccount.Services
         /// <summary>
         /// Creates or updates a Azure Sql Database SErver
         /// </summary>
-        public Management.Sql.Models.JobAccount CreateOrUpdate(string resourceGroupName, string serverName, string jobAccountName, string clientRequestId, JobAccountCreateOrUpdateParameters parameters)
+        public Management.Sql.LegacySdk.Models.JobAccount CreateOrUpdate(string resourceGroupName, string serverName, string jobAccountName, string clientRequestId, JobAccountCreateOrUpdateParameters parameters)
         {
             return GetCurrentSqlClient(clientRequestId).JobAccounts.CreateOrUpdate(resourceGroupName, serverName, jobAccountName, parameters).JobAccount;
         }
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Commands.Sql.JobAccount.Services
             // Get the SQL management client for the current subscription
             if (SqlClient == null)
             {
-                SqlClient = AzureSession.ClientFactory.CreateClient<SqlManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
+                SqlClient = AzureSession.Instance.ClientFactory.CreateClient<SqlManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
             }
             SqlClient.HttpClient.DefaultRequestHeaders.Remove(Constants.ClientRequestIdHeaderName);
             SqlClient.HttpClient.DefaultRequestHeaders.Add(Constants.ClientRequestIdHeaderName, clientRequestId);

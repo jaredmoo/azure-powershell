@@ -50,8 +50,6 @@ namespace Microsoft.Azure.Commands.Sql.JobAccount.Cmdlet
         /// <returns>A single server</returns>
         protected override IEnumerable<AzureSqlJobAccountModel> GetEntity()
         {
-            ModelAdapter.ThrowIfJobAccountNotSupportedByServer(this.ResourceGroupName, this.ServerName, this.clientRequestId);
-
             if (this.MyInvocation.BoundParameters.ContainsKey("JobAccountName"))
             {
                 return new List<AzureSqlJobAccountModel>

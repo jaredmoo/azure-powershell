@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.JobAccount.Adapter;
 using Microsoft.Azure.Commands.Sql.JobAccount.Model;
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Sql.JobAccount.Cmdlet
         /// </summary>
         /// <param name="subscription">The subscription the cmdlets are operation under</param>
         /// <returns>The server adapter</returns>
-        protected override AzureSqlJobAccountAdapter InitModelAdapter(AzureSubscription subscription)
+        protected override AzureSqlJobAccountAdapter InitModelAdapter(IAzureSubscription subscription)
         {
             return new AzureSqlJobAccountAdapter(DefaultContext);
         }
