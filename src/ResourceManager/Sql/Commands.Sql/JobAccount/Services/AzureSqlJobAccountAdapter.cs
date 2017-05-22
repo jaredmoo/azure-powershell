@@ -12,10 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Sql.JobAccount.Model;
 using Microsoft.Azure.Commands.Sql.JobAccount.Services;
-using Microsoft.Azure.Management.Sql.Models;
+using Microsoft.Azure.Management.Sql.LegacySdk.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,13 +36,13 @@ namespace Microsoft.Azure.Commands.Sql.JobAccount.Adapter
         /// <summary>
         /// Gets or sets the Azure profile
         /// </summary>
-        public AzureContext Context { get; set; }
+        public IAzureContext Context { get; set; }
 
         /// <summary>
         /// Constructs a server adapter
         /// </summary>
         /// <param name="context">The current azure profile</param>
-        public AzureSqlJobAccountAdapter(AzureContext context)
+        public AzureSqlJobAccountAdapter(IAzureContext context)
         {
             Context = context;
             Communicator = new AzureSqlJobAccountCommunicator(Context);
@@ -122,13 +122,13 @@ namespace Microsoft.Azure.Commands.Sql.JobAccount.Adapter
         }
 
         /// <summary>
-        /// Convert a Management.Sql.Models.JobAccount to AzureSqlDatabaseServerModel
+        /// Convert a Management.Sql.LegacySdk.Models.JobAccount to AzureSqlDatabaseServerModel
         /// </summary>
         /// <param name="resourceGroupName">The resource group the server is in</param>
         /// <param name="serverName">The server the job account is in</param>
         /// <param name="resp">The management client server response to convert</param>
         /// <returns>The converted job account model</returns>
-        private static AzureSqlJobAccountModel CreateJobAccountModelFromResponse(string resourceGroupName, string serverName, Management.Sql.Models.JobAccount resp)
+        private static AzureSqlJobAccountModel CreateJobAccountModelFromResponse(string resourceGroupName, string serverName, Management.Sql.LegacySdk.Models.JobAccount resp)
         {
             // Parse database name from database id
             // This is not expected to ever fail, but in case we have a bug here it's better to provide a more detailed error message
@@ -161,31 +161,7 @@ namespace Microsoft.Azure.Commands.Sql.JobAccount.Adapter
         {
             AzureSqlServerCommunicator serverCommunicator = new AzureSqlServerCommunicator(Context);
             var server = serverCommunicator.Get(resourceGroupName, serverName, clientId);
-
-            ThrowIfJobAccountNotSupportedByServer(server);
-
             return server.Location;
-        }
-
-        /// <summary>
-        /// Throws an exception if the server does not support job accounts.
-        /// </summary>
-        public void ThrowIfJobAccountNotSupportedByServer(string resourceGroupName, string serverName, string clientId)
-        {
-            AzureSqlServerCommunicator serverCommunicator = new AzureSqlServerCommunicator(Context);
-            Management.Sql.Models.Server server = serverCommunicator.Get(resourceGroupName, serverName, clientId);
-            ThrowIfJobAccountNotSupportedByServer(server);
-        }
-
-        /// <summary>
-        /// Throws an exception if the server does not support job accounts.
-        /// </summary>
-        private static void ThrowIfJobAccountNotSupportedByServer(Management.Sql.Models.Server server)
-        {
-            if (server.Properties.Version != "12.0")
-            {
-                throw new InvalidOperationException(string.Format(Properties.Resources.ServerNotApplicableForJobAccount, server.Name));
-            }
         }
     }
 }
