@@ -26,11 +26,6 @@ namespace Microsoft.Azure.Commands.Sql.RecommendedAction.Service
     public class AzureSqlRecommendedActionCommunicatorBase
     {
         /// <summary>
-        /// The Sql client to be used by this end points communicator
-        /// </summary>
-        protected static SqlManagementClient SqlClient { get; set; }
-
-        /// <summary>
         /// Gets or set the Azure subscription
         /// </summary>
         protected static IAzureSubscription Subscription { get; set; }
@@ -49,7 +44,6 @@ namespace Microsoft.Azure.Commands.Sql.RecommendedAction.Service
             if (context.Subscription != Subscription)
             {
                 Subscription = context.Subscription;
-                SqlClient = null;
             }
         }
 
@@ -60,15 +54,7 @@ namespace Microsoft.Azure.Commands.Sql.RecommendedAction.Service
         /// <returns>The SQL Management client for the currently selected subscription.</returns>
         protected SqlManagementClient GetCurrentSqlClient(string clientRequestId)
         {
-            // Get the SQL management client for the current subscription
-            if (SqlClient == null)
-            {
-                SqlClient = AzureSession.Instance.ClientFactory.CreateClient<SqlManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
-            }
-
-            SqlClient.HttpClient.DefaultRequestHeaders.Remove(Constants.ClientRequestIdHeaderName);
-            SqlClient.HttpClient.DefaultRequestHeaders.Add(Constants.ClientRequestIdHeaderName, clientRequestId);
-            return SqlClient;
+            return SqlManagementClientFactory.GetLegacySqlClient(Context, clientRequestId);
         }
     }
 }

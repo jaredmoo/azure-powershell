@@ -29,11 +29,6 @@ namespace Microsoft.Azure.Commands.Sql.ServerDisasterRecoveryConfiguration.Servi
     public class AzureSqlServerDisasterRecoveryConfigurationCommunicator
     {
         /// <summary>
-        /// The Sql client to be used by this end points communicator
-        /// </summary>
-        private static SqlManagementClient SqlClient { get; set; }
-
-        /// <summary>
         /// Gets or set the Azure subscription
         /// </summary>
         private static IAzureSubscription Subscription { get; set; }
@@ -53,7 +48,6 @@ namespace Microsoft.Azure.Commands.Sql.ServerDisasterRecoveryConfiguration.Servi
             if (context.Subscription != Subscription)
             {
                 Subscription = context.Subscription;
-                SqlClient = null;
             }
         }
 
@@ -111,14 +105,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerDisasterRecoveryConfiguration.Servi
         /// <returns>The SQL Management client for the currently selected subscription.</returns>
         private SqlManagementClient GetCurrentSqlClient(String clientRequestId)
         {
-            // Get the SQL management client for the current subscription
-            if (SqlClient == null)
-            {
-                SqlClient = AzureSession.Instance.ClientFactory.CreateClient<SqlManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
-            }
-            SqlClient.HttpClient.DefaultRequestHeaders.Remove(Constants.ClientRequestIdHeaderName);
-            SqlClient.HttpClient.DefaultRequestHeaders.Add(Constants.ClientRequestIdHeaderName, clientRequestId);
-            return SqlClient;
+            return SqlManagementClientFactory.GetLegacySqlClient(Context, clientRequestId);
         }
     }
 }

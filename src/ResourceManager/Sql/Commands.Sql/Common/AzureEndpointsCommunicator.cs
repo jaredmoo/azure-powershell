@@ -12,12 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Hyak.Common;
+using Microsoft.Azure;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Auditing.Model;
 using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Management.Resources.Models;
+using Microsoft.Azure.Management.Sql;
 using Microsoft.Azure.Management.Sql.LegacySdk;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.WindowsAzure.Management.Storage;
@@ -35,11 +38,6 @@ namespace Microsoft.Azure.Commands.Sql.Common
     /// </summary>
     public class AzureEndpointsCommunicator
     {
-        /// <summary>
-        /// The Sql management client used by this communicator
-        /// </summary>
-        private static SqlManagementClient SqlClient { get; set; }
-
         /// <summary>
         ///  The storage management client used by this communicator
         /// </summary>
@@ -84,7 +82,7 @@ namespace Microsoft.Azure.Commands.Sql.Common
         /// <returns>A dictionary with two entries, one for each possible key type with the appropriate key</returns>
         public async Task<Dictionary<StorageKeyKind, string>> GetStorageKeysAsync(string resourceGroupName, string storageAccountName)
         {
-            SqlManagementClient client = GetCurrentSqlClient("none");
+            Management.Sql.LegacySdk.SqlManagementClient client = SqlManagementClientFactory.GetLegacySqlClient(Context, "none");
 
             string url = Context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager).ToString();
             if (!url.EndsWith("/"))
@@ -209,7 +207,9 @@ namespace Microsoft.Azure.Commands.Sql.Common
         private Microsoft.WindowsAzure.Management.Storage.StorageManagementClient GetCurrentStorageClient(IAzureContext context)
         {
             if (StorageClient == null)
+            {
                 StorageClient = AzureSession.Instance.ClientFactory.CreateClient<Microsoft.WindowsAzure.Management.Storage.StorageManagementClient>(Context, AzureEnvironment.Endpoint.ServiceManagement);
+            }
             return StorageClient;
         }
 
@@ -219,7 +219,9 @@ namespace Microsoft.Azure.Commands.Sql.Common
         private Microsoft.Azure.Management.Storage.StorageManagementClient GetCurrentStorageV2Client(IAzureContext context)
         {
             if (StorageV2Client == null)
+            {
                 StorageV2Client = AzureSession.Instance.ClientFactory.CreateClient<Microsoft.Azure.Management.Storage.StorageManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
+            }
             return StorageV2Client;
         }
 
@@ -229,25 +231,10 @@ namespace Microsoft.Azure.Commands.Sql.Common
         private ResourceManagementClient GetCurrentResourcesClient(IAzureContext context)
         {
             if (ResourcesClient == null)
-                ResourcesClient = AzureSession.Instance.ClientFactory.CreateClient<ResourceManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
-            return ResourcesClient;
-        }
-
-        /// <summary>
-        /// Retrieve the SQL Management client for the currently selected subscription, adding the session and request
-        /// id tracing headers for the current cmdlet invocation.
-        /// </summary>
-        /// <returns>The SQL Management client for the currently selected subscription.</returns>
-        private SqlManagementClient GetCurrentSqlClient(String clientRequestId)
-        {
-            // Get the SQL management client for the current subscription
-            if (SqlClient == null)
             {
-                SqlClient = AzureSession.Instance.ClientFactory.CreateClient<SqlManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
+                ResourcesClient = AzureSession.Instance.ClientFactory.CreateClient<ResourceManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
             }
-            SqlClient.HttpClient.DefaultRequestHeaders.Remove(Constants.ClientRequestIdHeaderName);
-            SqlClient.HttpClient.DefaultRequestHeaders.Add(Constants.ClientRequestIdHeaderName, clientRequestId);
-            return SqlClient;
+            return ResourcesClient;
         }
     }
 }

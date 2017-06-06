@@ -31,11 +31,6 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Servic
     public class AzureSqlServerActiveDirectoryAdministratorCommunicator
     {
         /// <summary>
-        /// The Sql client to be used by this end points communicator
-        /// </summary>
-        private static SqlManagementClient SqlClient { get; set; }
-
-        /// <summary>
         /// The Sql client default name for the active directory admin
         /// </summary>
         private static string ActiveDirectoryDefaultName { get { return "ActiveDirectory"; } }
@@ -66,7 +61,6 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Servic
             if (context.Subscription != Subscription)
             {
                 Subscription = context.Subscription;
-                SqlClient = null;
             }
         }
 
@@ -111,14 +105,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Servic
         /// <returns>The SQL Management client for the currently selected subscription.</returns>
         private SqlManagementClient GetCurrentSqlClient(String clientRequestId)
         {
-            // Get the SQL management client for the current subscription
-            if (SqlClient == null)
-            {
-                SqlClient = AzureSession.Instance.ClientFactory.CreateClient<SqlManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
-            }
-            SqlClient.HttpClient.DefaultRequestHeaders.Remove(Constants.ClientRequestIdHeaderName);
-            SqlClient.HttpClient.DefaultRequestHeaders.Add(Constants.ClientRequestIdHeaderName, clientRequestId);
-            return SqlClient;
+            return SqlManagementClientFactory.GetLegacySqlClient(Context, clientRequestId);
         }
     }
 }

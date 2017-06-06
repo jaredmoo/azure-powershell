@@ -34,16 +34,6 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
     public class AzureSqlElasticPoolCommunicator
     {
         /// <summary>
-        /// The Sql client to be used by this end points communicator
-        /// </summary>
-        private static Management.Sql.SqlManagementClient SqlClient { get; set; }
-
-        /// <summary>
-        /// The old version of Sql client to be used by this end points communicator
-        /// </summary>
-        public Management.Sql.LegacySdk.SqlManagementClient LegacySqlClient { get; set; }
-
-        /// <summary>
         /// Gets or set the Azure subscription
         /// </summary>
         private static IAzureSubscription Subscription { get; set; }
@@ -64,7 +54,6 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
             if (context.Subscription != Subscription)
             {
                 Subscription = context.Subscription;
-                SqlClient = null;
             }
         }
 
@@ -139,14 +128,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
         /// <returns>The SQL Management client for the currently selected subscription.</returns>
         private Management.Sql.LegacySdk.SqlManagementClient GetLegacySqlClient(String clientRequestId)
         {
-            // Get the SQL management client for the current subscription
-            if (LegacySqlClient == null)
-            {
-                LegacySqlClient = AzureSession.Instance.ClientFactory.CreateClient<Management.Sql.LegacySdk.SqlManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
-            }
-            SqlClient.HttpClient.DefaultRequestHeaders.Remove(Constants.ClientRequestIdHeaderName);
-            SqlClient.HttpClient.DefaultRequestHeaders.Add(Constants.ClientRequestIdHeaderName, clientRequestId);
-            return LegacySqlClient;
+            return SqlManagementClientFactory.GetLegacySqlClient(Context, clientRequestId);
         }
 
         /// <summary>
@@ -156,13 +138,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
         /// <returns>The SQL Management client for the currently selected subscription.</returns>
         private Management.Sql.SqlManagementClient GetCurrentSqlClient(String clientRequestId)
         {
-            // Get the SQL management client for the current subscription
-            if (SqlClient == null)
-            {
-                SqlClient = AzureSession.Instance.ClientFactory.CreateArmClient<Management.Sql.SqlManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);            }
-            SqlClient.HttpClient.DefaultRequestHeaders.Remove(Constants.ClientRequestIdHeaderName);
-            SqlClient.HttpClient.DefaultRequestHeaders.Add(Constants.ClientRequestIdHeaderName, clientRequestId);
-            return SqlClient;
+            return SqlManagementClientFactory.GetSqlClient(Context, clientRequestId);
         }
     }
 }

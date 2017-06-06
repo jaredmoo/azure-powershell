@@ -32,11 +32,6 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
     public class AzureSqlDatabaseCommunicator
     {
         /// <summary>
-        /// The Sql client to be used by this end points communicator
-        /// </summary>
-        private static Management.Sql.LegacySdk.SqlManagementClient LegacySqlClient { get; set; }
-
-        /// <summary>
         /// Gets or set the Azure subscription
         /// </summary>
         private static IAzureSubscription Subscription { get; set; }
@@ -62,7 +57,6 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
             if (context.Subscription != Subscription)
             {
                 Subscription = context.Subscription;
-                LegacySqlClient = null;
             }
         }
 
@@ -129,12 +123,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         /// <returns>The SQL Management client for the currently selected subscription.</returns>
         private Management.Sql.SqlManagementClient GetCurrentSqlClient(String clientRequestId)
         {
-            // Get the SQL management client for the current subscription
-            // Note: client is not cached in static field because that causes ObjectDisposedException in functional tests.
-            var sqlClient = AzureSession.Instance.ClientFactory.CreateArmClient<Management.Sql.SqlManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
-            sqlClient.HttpClient.DefaultRequestHeaders.Remove(Constants.ClientRequestIdHeaderName);
-            sqlClient.HttpClient.DefaultRequestHeaders.Add(Constants.ClientRequestIdHeaderName, clientRequestId);
-            return sqlClient;
+            return SqlManagementClientFactory.GetSqlClient(Context, clientRequestId);
         }
 
         /// <summary>
@@ -144,14 +133,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         /// <returns>The SQL Management client for the currently selected subscription.</returns>
         private Management.Sql.LegacySdk.SqlManagementClient GetLegacySqlClient(String clientRequestId)
         {
-            // Get the SQL management client for the current subscription
-            if (LegacySqlClient == null)
-            {
-                LegacySqlClient = AzureSession.Instance.ClientFactory.CreateClient<Management.Sql.LegacySdk.SqlManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
-            }
-            LegacySqlClient.HttpClient.DefaultRequestHeaders.Remove(Constants.ClientRequestIdHeaderName);
-            LegacySqlClient.HttpClient.DefaultRequestHeaders.Add(Constants.ClientRequestIdHeaderName, clientRequestId);
-            return LegacySqlClient;
+            return SqlManagementClientFactory.GetLegacySqlClient(Context, clientRequestId);
         }
     }
 }
