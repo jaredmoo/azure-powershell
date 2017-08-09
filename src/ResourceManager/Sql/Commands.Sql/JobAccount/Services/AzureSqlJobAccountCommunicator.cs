@@ -59,33 +59,33 @@ namespace Microsoft.Azure.Commands.Sql.JobAccount.Services
         /// <summary>
         /// Gets the Azure Sql Database SErver
         /// </summary>
-        public Management.Sql.LegacySdk.Models.JobAccount Get(string resourceGroupName, string serverName, string jobAccountName, string clientRequestId)
+        public Management.Sql.LegacySdk.Models.JobAccount Get(string resourceGroupName, string serverName, string jobAccountName)
         {
-            return GetCurrentSqlClient(clientRequestId).JobAccounts.Get(resourceGroupName, serverName, jobAccountName).JobAccount;
+            return GetCurrentSqlClient().JobAccounts.Get(resourceGroupName, serverName, jobAccountName).JobAccount;
         }
 
         /// <summary>
         /// Lists Azure Sql Database Servers
         /// </summary>
-        public IList<Management.Sql.LegacySdk.Models.JobAccount> List(string resourceGroupName, string serverName, string clientRequestId)
+        public IList<Management.Sql.LegacySdk.Models.JobAccount> List(string resourceGroupName, string serverName)
         {
-            return GetCurrentSqlClient(clientRequestId).JobAccounts.List(resourceGroupName, serverName).JobAccounts;
+            return GetCurrentSqlClient().JobAccounts.List(resourceGroupName, serverName).JobAccounts;
         }
 
         /// <summary>
         /// Creates or updates a Azure Sql Database SErver
         /// </summary>
-        public Management.Sql.LegacySdk.Models.JobAccount CreateOrUpdate(string resourceGroupName, string serverName, string jobAccountName, string clientRequestId, JobAccountCreateOrUpdateParameters parameters)
+        public Management.Sql.LegacySdk.Models.JobAccount CreateOrUpdate(string resourceGroupName, string serverName, string jobAccountName, JobAccountCreateOrUpdateParameters parameters)
         {
-            return GetCurrentSqlClient(clientRequestId).JobAccounts.CreateOrUpdate(resourceGroupName, serverName, jobAccountName, parameters).JobAccount;
+            return GetCurrentSqlClient().JobAccounts.CreateOrUpdate(resourceGroupName, serverName, jobAccountName, parameters).JobAccount;
         }
 
         /// <summary>
         /// Deletes a Azure Sql Database SErver
         /// </summary>
-        public void Remove(string resourceGroupName, string serverName, string jobAccountName, string clientRequestId)
+        public void Remove(string resourceGroupName, string serverName, string jobAccountName)
         {
-            GetCurrentSqlClient(clientRequestId).JobAccounts.Delete(resourceGroupName, serverName, jobAccountName);
+            GetCurrentSqlClient().JobAccounts.Delete(resourceGroupName, serverName, jobAccountName);
         }
 
         /// <summary>
@@ -93,15 +93,13 @@ namespace Microsoft.Azure.Commands.Sql.JobAccount.Services
         /// id tracing headers for the current cmdlet invocation.
         /// </summary>
         /// <returns>The SQL Management client for the currently selected subscription.</returns>
-        private SqlManagementClient GetCurrentSqlClient(String clientRequestId)
+        private SqlManagementClient GetCurrentSqlClient()
         {
             // Get the SQL management client for the current subscription
             if (SqlClient == null)
             {
                 SqlClient = AzureSession.Instance.ClientFactory.CreateClient<SqlManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
             }
-            SqlClient.HttpClient.DefaultRequestHeaders.Remove(Constants.ClientRequestIdHeaderName);
-            SqlClient.HttpClient.DefaultRequestHeaders.Add(Constants.ClientRequestIdHeaderName, clientRequestId);
             return SqlClient;
         }
     }

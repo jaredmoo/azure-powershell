@@ -54,12 +54,12 @@ namespace Microsoft.Azure.Commands.Sql.JobAccount.Cmdlet
             {
                 return new List<AzureSqlJobAccountModel>
                 {
-                    ModelAdapter.GetJobAccount(this.ResourceGroupName, this.ServerName, this.JobAccountName, this.clientRequestId)
+                    ModelAdapter.GetJobAccount(this.ResourceGroupName, this.ServerName, this.JobAccountName)
                 };
             }
             else
             {
-                return ModelAdapter.GetJobAccount(this.ResourceGroupName, this.ServerName, this.clientRequestId);
+                return ModelAdapter.GetJobAccount(this.ResourceGroupName, this.ServerName);
             }
         }
 

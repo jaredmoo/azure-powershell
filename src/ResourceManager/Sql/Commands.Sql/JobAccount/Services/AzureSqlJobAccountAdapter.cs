@@ -58,9 +58,9 @@ namespace Microsoft.Azure.Commands.Sql.JobAccount.Adapter
         /// <returns>
         /// The job account
         /// </returns>
-        public AzureSqlJobAccountModel GetJobAccount(string resourceGroupName, string serverName, string jobAccountName, string clientId)
+        public AzureSqlJobAccountModel GetJobAccount(string resourceGroupName, string serverName, string jobAccountName)
         {
-            var resp = Communicator.Get(resourceGroupName, serverName, jobAccountName, clientId);
+            var resp = Communicator.Get(resourceGroupName, serverName, jobAccountName);
             return CreateJobAccountModelFromResponse(resourceGroupName, serverName, resp);
         }
 
@@ -73,9 +73,9 @@ namespace Microsoft.Azure.Commands.Sql.JobAccount.Adapter
         /// <returns>
         /// A list of all the job account
         /// </returns>
-        public List<AzureSqlJobAccountModel> GetJobAccount(string resourceGroupName, string serverName, string clientId)
+        public List<AzureSqlJobAccountModel> GetJobAccount(string resourceGroupName, string serverName)
         {
-            var resp = Communicator.List(resourceGroupName, serverName, clientId);
+            var resp = Communicator.List(resourceGroupName, serverName);
             return resp.Select(s => CreateJobAccountModelFromResponse(resourceGroupName, serverName, s)).ToList();
         }
 
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Commands.Sql.JobAccount.Adapter
         /// <returns>
         /// The updated server model
         /// </returns>
-        public AzureSqlJobAccountModel UpsertJobAccount(AzureSqlJobAccountModel model, string clientId)
+        public AzureSqlJobAccountModel UpsertJobAccount(AzureSqlJobAccountModel model)
         {
             // Construct database id
             string databaseId = string.Format("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Sql/servers/{2}/databases/{3}",
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Commands.Sql.JobAccount.Adapter
                 model.ServerName,
                 model.DatabaseName);
 
-            var resp = Communicator.CreateOrUpdate(model.ResourceGroupName, model.ServerName, model.JobAccountName, clientId, new JobAccountCreateOrUpdateParameters
+            var resp = Communicator.CreateOrUpdate(model.ResourceGroupName, model.ServerName, model.JobAccountName, new JobAccountCreateOrUpdateParameters
             {
                 Location = model.Location,
                 Tags = model.Tags,
@@ -116,9 +116,9 @@ namespace Microsoft.Azure.Commands.Sql.JobAccount.Adapter
         /// <param name="serverName">The server the job account is in</param>
         /// <param name="jobAccountName">Name of the job account to delete.</param>
         /// <param name="clientId">The client identifier.</param>
-        public void RemoveJobAccount(string resourceGroupName, string serverName, string jobAccountName, string clientId)
+        public void RemoveJobAccount(string resourceGroupName, string serverName, string jobAccountName)
         {
-            Communicator.Remove(resourceGroupName, serverName, jobAccountName, clientId);
+            Communicator.Remove(resourceGroupName, serverName, jobAccountName);
         }
 
         /// <summary>
@@ -157,10 +157,10 @@ namespace Microsoft.Azure.Commands.Sql.JobAccount.Adapter
         /// <remarks>
         /// These 2 operations (get location, throw if not supported) are combined in order to minimize round trips.
         /// </remarks>
-        public string GetServerLocationAndThrowIfJobAccountNotSupportedByServer(string resourceGroupName, string serverName, string clientId)
+        public string GetServerLocationAndThrowIfJobAccountNotSupportedByServer(string resourceGroupName, string serverName)
         {
             AzureSqlServerCommunicator serverCommunicator = new AzureSqlServerCommunicator(Context);
-            var server = serverCommunicator.Get(resourceGroupName, serverName, clientId);
+            var server = serverCommunicator.Get(resourceGroupName, serverName);
             return server.Location;
         }
     }

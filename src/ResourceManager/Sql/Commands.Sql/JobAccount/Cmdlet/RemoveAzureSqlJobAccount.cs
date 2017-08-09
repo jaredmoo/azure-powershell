@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.Sql.JobAccount.Cmdlet
         {
             return new List<Model.AzureSqlJobAccountModel>
             {
-                ModelAdapter.GetJobAccount(this.ResourceGroupName, this.ServerName, this.JobAccountName, this.clientRequestId)
+                ModelAdapter.GetJobAccount(this.ResourceGroupName, this.ServerName, this.JobAccountName)
             };
         }
 
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.Sql.JobAccount.Cmdlet
         /// <returns>The job account that was deleted</returns>
         protected override IEnumerable<Model.AzureSqlJobAccountModel> PersistChanges(IEnumerable<Model.AzureSqlJobAccountModel> entity)
         {
-            ModelAdapter.RemoveJobAccount(this.ResourceGroupName, this.ServerName, this.JobAccountName, this.clientRequestId);
+            ModelAdapter.RemoveJobAccount(this.ResourceGroupName, this.ServerName, this.JobAccountName);
             return entity;
         }
 
