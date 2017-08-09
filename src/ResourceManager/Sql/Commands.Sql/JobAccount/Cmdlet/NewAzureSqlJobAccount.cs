@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.Sql.JobAccount.Cmdlet
             try
             {
                 WriteDebugWithTimestamp("JobAccountName: {0}", JobAccountName);
-                ModelAdapter.GetJobAccount(this.ResourceGroupName, this.ServerName, this.JobAccountName, this.clientRequestId);
+                ModelAdapter.GetJobAccount(this.ResourceGroupName, this.ServerName, this.JobAccountName);
             }
             catch (CloudException ex)
             {
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Commands.Sql.JobAccount.Cmdlet
         /// <returns>The generated model from user input</returns>
         protected override IEnumerable<Model.AzureSqlJobAccountModel> ApplyUserInputToModel(IEnumerable<Model.AzureSqlJobAccountModel> model)
         {
-            string location = ModelAdapter.GetServerLocationAndThrowIfJobAccountNotSupportedByServer(this.ResourceGroupName, this.ServerName, this.clientRequestId);
+            string location = ModelAdapter.GetServerLocationAndThrowIfJobAccountNotSupportedByServer(this.ResourceGroupName, this.ServerName);
 
             List<Model.AzureSqlJobAccountModel> newEntity = new List<Model.AzureSqlJobAccountModel>
             {
@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Commands.Sql.JobAccount.Cmdlet
         {
             return new List<Model.AzureSqlJobAccountModel>
             {
-                ModelAdapter.UpsertJobAccount(entity.First(), this.clientRequestId)
+                ModelAdapter.UpsertJobAccount(entity.First())
             };
         }
     }
