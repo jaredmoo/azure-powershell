@@ -21,9 +21,7 @@ namespace Microsoft.Azure.Commands.Sql.JobAgent.Cmdlet
     /// <summary>
     /// Defines the Remove-AzureRmSqlJobAgent cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmSqlJobAgent",
-        SupportsShouldProcess = true,
-        ConfirmImpact = ConfirmImpact.High)]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmSqlJobAgent", SupportsShouldProcess = true)]
     public class RemoveAzureSqlJobAgent : AzureSqlJobAgentCmdletBase
     {
         /// <summary>

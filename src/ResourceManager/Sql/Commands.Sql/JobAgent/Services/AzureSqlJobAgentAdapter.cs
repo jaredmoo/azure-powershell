@@ -15,7 +15,7 @@
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Sql.JobAgent.Model;
 using Microsoft.Azure.Commands.Sql.JobAgent.Services;
-using Microsoft.Azure.Management.Sql.LegacySdk.Models;
+using Microsoft.Azure.Management.Sql.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -96,14 +96,11 @@ namespace Microsoft.Azure.Commands.Sql.JobAgent.Adapter
                 model.ServerName,
                 model.DatabaseName);
 
-            var resp = Communicator.CreateOrUpdate(model.ResourceGroupName, model.ServerName, model.JobAgentName, new JobAgentCreateOrUpdateParameters
+            var resp = Communicator.CreateOrUpdate(model.ResourceGroupName, model.ServerName, model.JobAgentName, new Management.Sql.Models.JobAgent
             {
                 Location = model.Location,
                 Tags = model.Tags,
-                Properties = new JobAgentCreateOrUpdateProperties
-                {
-                    DatabaseId = databaseId
-                }
+                DatabaseId = databaseId
             });
 
             return CreateJobAgentModelFromResponse(model.ResourceGroupName, model.ServerName, resp);
@@ -122,18 +119,18 @@ namespace Microsoft.Azure.Commands.Sql.JobAgent.Adapter
         }
 
         /// <summary>
-        /// Convert a Management.Sql.LegacySdk.Models.JobAgent to AzureSqlDatabaseServerModel
+        /// Convert a Management.Sql.Models.JobAgent to AzureSqlDatabaseServerModel
         /// </summary>
         /// <param name="resourceGroupName">The resource group the server is in</param>
         /// <param name="serverName">The server the job account is in</param>
         /// <param name="resp">The management client server response to convert</param>
         /// <returns>The converted job account model</returns>
-        private static AzureSqlJobAgentModel CreateJobAgentModelFromResponse(string resourceGroupName, string serverName, Management.Sql.LegacySdk.Models.JobAgent resp)
+        private static AzureSqlJobAgentModel CreateJobAgentModelFromResponse(string resourceGroupName, string serverName, Management.Sql.Models.JobAgent resp)
         {
             // Parse database name from database id
             // This is not expected to ever fail, but in case we have a bug here it's better to provide a more detailed error message
-            int lastSlashIndex = resp.Properties.DatabaseId.LastIndexOf('/');
-            string databaseName = resp.Properties.DatabaseId.Substring(lastSlashIndex + 1);
+            int lastSlashIndex = resp.DatabaseId.LastIndexOf('/');
+            string databaseName = resp.DatabaseId.Substring(lastSlashIndex + 1);
 
             AzureSqlJobAgentModel jobAgent = new AzureSqlJobAgentModel
             {

@@ -15,8 +15,9 @@
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Sql.Common;
-using Microsoft.Azure.Management.Sql.LegacySdk;
-using Microsoft.Azure.Management.Sql.LegacySdk.Models;
+using Microsoft.Azure.Management.Sql;
+using Microsoft.Azure.Management.Sql.Models;
+using Microsoft.Rest.Azure;
 using System;
 using System.Collections.Generic;
 
@@ -27,11 +28,6 @@ namespace Microsoft.Azure.Commands.Sql.JobAgent.Services
     /// </summary>
     public class AzureSqlJobAgentCommunicator
     {
-        /// <summary>
-        /// The Sql client to be used by this end points communicator
-        /// </summary>
-        private static SqlManagementClient SqlClient { get; set; }
-
         /// <summary>
         /// Gets or set the Azure subscription
         /// </summary>
@@ -52,32 +48,31 @@ namespace Microsoft.Azure.Commands.Sql.JobAgent.Services
             if (context.Subscription != Subscription)
             {
                 Subscription = context.Subscription;
-                SqlClient = null;
             }
         }
 
         /// <summary>
         /// Gets the Azure Sql Database SErver
         /// </summary>
-        public Management.Sql.LegacySdk.Models.JobAgent Get(string resourceGroupName, string serverName, string jobAgentName)
+        public Management.Sql.Models.JobAgent Get(string resourceGroupName, string serverName, string jobAgentName)
         {
-            return GetCurrentSqlClient().JobAgents.Get(resourceGroupName, serverName, jobAgentName).JobAgent;
+            return GetCurrentSqlClient().JobAgents.Get(resourceGroupName, serverName, jobAgentName);
         }
 
         /// <summary>
         /// Lists Azure Sql Database Servers
         /// </summary>
-        public IList<Management.Sql.LegacySdk.Models.JobAgent> List(string resourceGroupName, string serverName)
+        public IPage<Management.Sql.Models.JobAgent> List(string resourceGroupName, string serverName)
         {
-            return GetCurrentSqlClient().JobAgents.List(resourceGroupName, serverName).JobAgents;
+            return GetCurrentSqlClient().JobAgents.ListByServer(resourceGroupName, serverName);
         }
 
         /// <summary>
         /// Creates or updates a Azure Sql Database SErver
         /// </summary>
-        public Management.Sql.LegacySdk.Models.JobAgent CreateOrUpdate(string resourceGroupName, string serverName, string jobAgentName, JobAgentCreateOrUpdateParameters parameters)
+        public Management.Sql.Models.JobAgent CreateOrUpdate(string resourceGroupName, string serverName, string jobAgentName, Management.Sql.Models.JobAgent parameters)
         {
-            return GetCurrentSqlClient().JobAgents.CreateOrUpdate(resourceGroupName, serverName, jobAgentName, parameters).JobAgent;
+            return GetCurrentSqlClient().JobAgents.CreateOrUpdate(resourceGroupName, serverName, jobAgentName, parameters);
         }
 
         /// <summary>
@@ -96,11 +91,9 @@ namespace Microsoft.Azure.Commands.Sql.JobAgent.Services
         private SqlManagementClient GetCurrentSqlClient()
         {
             // Get the SQL management client for the current subscription
-            if (SqlClient == null)
-            {
-                SqlClient = AzureSession.Instance.ClientFactory.CreateClient<SqlManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
-            }
-            return SqlClient;
+            // Note: client is not cached in static field because that causes ObjectDisposedException in functional tests.
+            var sqlClient = AzureSession.Instance.ClientFactory.CreateArmClient<Management.Sql.SqlManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
+            return sqlClient;
         }
     }
 }
