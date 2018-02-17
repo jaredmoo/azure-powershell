@@ -16,15 +16,15 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Management.Automation;
 
-namespace Microsoft.Azure.Commands.Sql.JobAccount.Cmdlet
+namespace Microsoft.Azure.Commands.Sql.JobAgent.Cmdlet
 {
     /// <summary>
-    /// Defines the Remove-AzureRmSqlJobAccount cmdlet
+    /// Defines the Remove-AzureRmSqlJobAgent cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmSqlJobAccount",
+    [Cmdlet(VerbsCommon.Remove, "AzureRmSqlJobAgent",
         SupportsShouldProcess = true,
         ConfirmImpact = ConfirmImpact.High)]
-    public class RemoveAzureSqlJobAccount : AzureSqlJobAccountCmdletBase
+    public class RemoveAzureSqlJobAgent : AzureSqlJobAgentCmdletBase
     {
         /// <summary>
         /// Gets or sets the name of the database server to use.
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.Sql.JobAccount.Cmdlet
             Position = 2,
             HelpMessage = "SQL Database job account name.")]
         [ValidateNotNullOrEmpty]
-        public string JobAccountName { get; set; }
+        public string JobAgentName { get; set; }
 
         /// <summary>
         /// Defines whether it is ok to skip the requesting of rule removal confirmation
@@ -56,11 +56,11 @@ namespace Microsoft.Azure.Commands.Sql.JobAccount.Cmdlet
         /// Gets the entity to delete
         /// </summary>
         /// <returns>The entity going to be deleted</returns>
-        protected override IEnumerable<Model.AzureSqlJobAccountModel> GetEntity()
+        protected override IEnumerable<Model.AzureSqlJobAgentModel> GetEntity()
         {
-            return new List<Model.AzureSqlJobAccountModel>
+            return new List<Model.AzureSqlJobAgentModel>
             {
-                ModelAdapter.GetJobAccount(this.ResourceGroupName, this.ServerName, this.JobAccountName)
+                ModelAdapter.GetJobAgent(this.ResourceGroupName, this.ServerName, this.JobAgentName)
             };
         }
 
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.Sql.JobAccount.Cmdlet
         /// </summary>
         /// <param name="model">The result of GetEntity</param>
         /// <returns>The input model</returns>
-        protected override IEnumerable<Model.AzureSqlJobAccountModel> ApplyUserInputToModel(IEnumerable<Model.AzureSqlJobAccountModel> model)
+        protected override IEnumerable<Model.AzureSqlJobAgentModel> ApplyUserInputToModel(IEnumerable<Model.AzureSqlJobAgentModel> model)
         {
             return model;
         }
@@ -79,9 +79,9 @@ namespace Microsoft.Azure.Commands.Sql.JobAccount.Cmdlet
         /// </summary>
         /// <param name="entity">The job account being deleted</param>
         /// <returns>The job account that was deleted</returns>
-        protected override IEnumerable<Model.AzureSqlJobAccountModel> PersistChanges(IEnumerable<Model.AzureSqlJobAccountModel> entity)
+        protected override IEnumerable<Model.AzureSqlJobAgentModel> PersistChanges(IEnumerable<Model.AzureSqlJobAgentModel> entity)
         {
-            ModelAdapter.RemoveJobAccount(this.ResourceGroupName, this.ServerName, this.JobAccountName);
+            ModelAdapter.RemoveJobAgent(this.ResourceGroupName, this.ServerName, this.JobAgentName);
             return entity;
         }
 
@@ -91,8 +91,8 @@ namespace Microsoft.Azure.Commands.Sql.JobAccount.Cmdlet
         public override void ExecuteCmdlet()
         {
             if (!Force.IsPresent && !ShouldProcess(
-               string.Format(CultureInfo.InvariantCulture, Properties.Resources.RemoveAzureSqlJobAccountDescription, this.JobAccountName, this.ServerName),
-               string.Format(CultureInfo.InvariantCulture, Properties.Resources.RemoveAzureSqlJobAccountWarning, this.JobAccountName, this.ServerName),
+               string.Format(CultureInfo.InvariantCulture, Properties.Resources.RemoveAzureSqlJobAgentDescription, this.JobAgentName, this.ServerName),
+               string.Format(CultureInfo.InvariantCulture, Properties.Resources.RemoveAzureSqlJobAgentWarning, this.JobAgentName, this.ServerName),
                Properties.Resources.ShouldProcessCaption))
             {
                 return;

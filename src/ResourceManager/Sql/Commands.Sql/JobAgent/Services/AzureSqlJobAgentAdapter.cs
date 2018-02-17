@@ -13,25 +13,25 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Sql.JobAccount.Model;
-using Microsoft.Azure.Commands.Sql.JobAccount.Services;
+using Microsoft.Azure.Commands.Sql.JobAgent.Model;
+using Microsoft.Azure.Commands.Sql.JobAgent.Services;
 using Microsoft.Azure.Management.Sql.LegacySdk.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Azure.Commands.Sql.Server.Services;
 
-namespace Microsoft.Azure.Commands.Sql.JobAccount.Adapter
+namespace Microsoft.Azure.Commands.Sql.JobAgent.Adapter
 {
     /// <summary>
     /// Adapter for server operations
     /// </summary>
-    public class AzureSqlJobAccountAdapter
+    public class AzureSqlJobAgentAdapter
     {
         /// <summary>
         /// Gets or sets the AzureEndpointsCommunicator which has all the needed management clients
         /// </summary>
-        private AzureSqlJobAccountCommunicator Communicator { get; set; }
+        private AzureSqlJobAgentCommunicator Communicator { get; set; }
 
         /// <summary>
         /// Gets or sets the Azure profile
@@ -42,10 +42,10 @@ namespace Microsoft.Azure.Commands.Sql.JobAccount.Adapter
         /// Constructs a server adapter
         /// </summary>
         /// <param name="context">The current azure profile</param>
-        public AzureSqlJobAccountAdapter(IAzureContext context)
+        public AzureSqlJobAgentAdapter(IAzureContext context)
         {
             Context = context;
-            Communicator = new AzureSqlJobAccountCommunicator(Context);
+            Communicator = new AzureSqlJobAgentCommunicator(Context);
         }
 
         /// <summary>
@@ -53,15 +53,15 @@ namespace Microsoft.Azure.Commands.Sql.JobAccount.Adapter
         /// </summary>
         /// <param name="resourceGroupName">The name of the resource group</param>
         /// <param name="serverName">The server the job account is in</param>
-        /// <param name="jobAccountName">Name of the job account.</param>
+        /// <param name="jobAgentName">Name of the job account.</param>
         /// <param name="clientId">The client identifier.</param>
         /// <returns>
         /// The job account
         /// </returns>
-        public AzureSqlJobAccountModel GetJobAccount(string resourceGroupName, string serverName, string jobAccountName)
+        public AzureSqlJobAgentModel GetJobAgent(string resourceGroupName, string serverName, string jobAgentName)
         {
-            var resp = Communicator.Get(resourceGroupName, serverName, jobAccountName);
-            return CreateJobAccountModelFromResponse(resourceGroupName, serverName, resp);
+            var resp = Communicator.Get(resourceGroupName, serverName, jobAgentName);
+            return CreateJobAgentModelFromResponse(resourceGroupName, serverName, resp);
         }
 
         /// <summary>
@@ -73,10 +73,10 @@ namespace Microsoft.Azure.Commands.Sql.JobAccount.Adapter
         /// <returns>
         /// A list of all the job account
         /// </returns>
-        public List<AzureSqlJobAccountModel> GetJobAccount(string resourceGroupName, string serverName)
+        public List<AzureSqlJobAgentModel> GetJobAgent(string resourceGroupName, string serverName)
         {
             var resp = Communicator.List(resourceGroupName, serverName);
-            return resp.Select(s => CreateJobAccountModelFromResponse(resourceGroupName, serverName, s)).ToList();
+            return resp.Select(s => CreateJobAgentModelFromResponse(resourceGroupName, serverName, s)).ToList();
         }
 
         /// <summary>
@@ -87,26 +87,26 @@ namespace Microsoft.Azure.Commands.Sql.JobAccount.Adapter
         /// <returns>
         /// The updated server model
         /// </returns>
-        public AzureSqlJobAccountModel UpsertJobAccount(AzureSqlJobAccountModel model)
+        public AzureSqlJobAgentModel UpsertJobAgent(AzureSqlJobAgentModel model)
         {
             // Construct database id
             string databaseId = string.Format("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Sql/servers/{2}/databases/{3}",
-                AzureSqlJobAccountCommunicator.Subscription.Id,
+                AzureSqlJobAgentCommunicator.Subscription.Id,
                 model.ResourceGroupName,
                 model.ServerName,
                 model.DatabaseName);
 
-            var resp = Communicator.CreateOrUpdate(model.ResourceGroupName, model.ServerName, model.JobAccountName, new JobAccountCreateOrUpdateParameters
+            var resp = Communicator.CreateOrUpdate(model.ResourceGroupName, model.ServerName, model.JobAgentName, new JobAgentCreateOrUpdateParameters
             {
                 Location = model.Location,
                 Tags = model.Tags,
-                Properties = new JobAccountCreateOrUpdateProperties
+                Properties = new JobAgentCreateOrUpdateProperties
                 {
                     DatabaseId = databaseId
                 }
             });
 
-            return CreateJobAccountModelFromResponse(model.ResourceGroupName, model.ServerName, resp);
+            return CreateJobAgentModelFromResponse(model.ResourceGroupName, model.ServerName, resp);
         }
 
         /// <summary>
@@ -114,37 +114,37 @@ namespace Microsoft.Azure.Commands.Sql.JobAccount.Adapter
         /// </summary>
         /// <param name="resourceGroupName">The resource group the server is in</param>
         /// <param name="serverName">The server the job account is in</param>
-        /// <param name="jobAccountName">Name of the job account to delete.</param>
+        /// <param name="jobAgentName">Name of the job account to delete.</param>
         /// <param name="clientId">The client identifier.</param>
-        public void RemoveJobAccount(string resourceGroupName, string serverName, string jobAccountName)
+        public void RemoveJobAgent(string resourceGroupName, string serverName, string jobAgentName)
         {
-            Communicator.Remove(resourceGroupName, serverName, jobAccountName);
+            Communicator.Remove(resourceGroupName, serverName, jobAgentName);
         }
 
         /// <summary>
-        /// Convert a Management.Sql.LegacySdk.Models.JobAccount to AzureSqlDatabaseServerModel
+        /// Convert a Management.Sql.LegacySdk.Models.JobAgent to AzureSqlDatabaseServerModel
         /// </summary>
         /// <param name="resourceGroupName">The resource group the server is in</param>
         /// <param name="serverName">The server the job account is in</param>
         /// <param name="resp">The management client server response to convert</param>
         /// <returns>The converted job account model</returns>
-        private static AzureSqlJobAccountModel CreateJobAccountModelFromResponse(string resourceGroupName, string serverName, Management.Sql.LegacySdk.Models.JobAccount resp)
+        private static AzureSqlJobAgentModel CreateJobAgentModelFromResponse(string resourceGroupName, string serverName, Management.Sql.LegacySdk.Models.JobAgent resp)
         {
             // Parse database name from database id
             // This is not expected to ever fail, but in case we have a bug here it's better to provide a more detailed error message
             int lastSlashIndex = resp.Properties.DatabaseId.LastIndexOf('/');
             string databaseName = resp.Properties.DatabaseId.Substring(lastSlashIndex + 1);
 
-            AzureSqlJobAccountModel jobAccount = new AzureSqlJobAccountModel
+            AzureSqlJobAgentModel jobAgent = new AzureSqlJobAgentModel
             {
                 ResourceGroupName = resourceGroupName,
                 ServerName = serverName,
-                JobAccountName = resp.Name,
+                JobAgentName = resp.Name,
                 Location = resp.Location,
                 DatabaseName = databaseName
             };
 
-            return jobAccount;
+            return jobAgent;
         }
 
         /// <summary>
@@ -157,7 +157,7 @@ namespace Microsoft.Azure.Commands.Sql.JobAccount.Adapter
         /// <remarks>
         /// These 2 operations (get location, throw if not supported) are combined in order to minimize round trips.
         /// </remarks>
-        public string GetServerLocationAndThrowIfJobAccountNotSupportedByServer(string resourceGroupName, string serverName)
+        public string GetServerLocationAndThrowIfJobAgentNotSupportedByServer(string resourceGroupName, string serverName)
         {
             AzureSqlServerCommunicator serverCommunicator = new AzureSqlServerCommunicator(Context);
             var server = serverCommunicator.Get(resourceGroupName, serverName);

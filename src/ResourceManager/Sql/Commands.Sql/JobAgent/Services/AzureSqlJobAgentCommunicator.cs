@@ -20,12 +20,12 @@ using Microsoft.Azure.Management.Sql.LegacySdk.Models;
 using System;
 using System.Collections.Generic;
 
-namespace Microsoft.Azure.Commands.Sql.JobAccount.Services
+namespace Microsoft.Azure.Commands.Sql.JobAgent.Services
 {
     /// <summary>
     /// This class is responsible for all the REST communication with the audit REST endpoints
     /// </summary>
-    public class AzureSqlJobAccountCommunicator
+    public class AzureSqlJobAgentCommunicator
     {
         /// <summary>
         /// The Sql client to be used by this end points communicator
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.Sql.JobAccount.Services
         /// Creates a communicator for Azure Sql Job Accounts
         /// </summary>
         /// <param name="context">The context.</param>
-        public AzureSqlJobAccountCommunicator(IAzureContext context)
+        public AzureSqlJobAgentCommunicator(IAzureContext context)
         {
             Context = context;
             if (context.Subscription != Subscription)
@@ -59,33 +59,33 @@ namespace Microsoft.Azure.Commands.Sql.JobAccount.Services
         /// <summary>
         /// Gets the Azure Sql Database SErver
         /// </summary>
-        public Management.Sql.LegacySdk.Models.JobAccount Get(string resourceGroupName, string serverName, string jobAccountName)
+        public Management.Sql.LegacySdk.Models.JobAgent Get(string resourceGroupName, string serverName, string jobAgentName)
         {
-            return GetCurrentSqlClient().JobAccounts.Get(resourceGroupName, serverName, jobAccountName).JobAccount;
+            return GetCurrentSqlClient().JobAgents.Get(resourceGroupName, serverName, jobAgentName).JobAgent;
         }
 
         /// <summary>
         /// Lists Azure Sql Database Servers
         /// </summary>
-        public IList<Management.Sql.LegacySdk.Models.JobAccount> List(string resourceGroupName, string serverName)
+        public IList<Management.Sql.LegacySdk.Models.JobAgent> List(string resourceGroupName, string serverName)
         {
-            return GetCurrentSqlClient().JobAccounts.List(resourceGroupName, serverName).JobAccounts;
+            return GetCurrentSqlClient().JobAgents.List(resourceGroupName, serverName).JobAgents;
         }
 
         /// <summary>
         /// Creates or updates a Azure Sql Database SErver
         /// </summary>
-        public Management.Sql.LegacySdk.Models.JobAccount CreateOrUpdate(string resourceGroupName, string serverName, string jobAccountName, JobAccountCreateOrUpdateParameters parameters)
+        public Management.Sql.LegacySdk.Models.JobAgent CreateOrUpdate(string resourceGroupName, string serverName, string jobAgentName, JobAgentCreateOrUpdateParameters parameters)
         {
-            return GetCurrentSqlClient().JobAccounts.CreateOrUpdate(resourceGroupName, serverName, jobAccountName, parameters).JobAccount;
+            return GetCurrentSqlClient().JobAgents.CreateOrUpdate(resourceGroupName, serverName, jobAgentName, parameters).JobAgent;
         }
 
         /// <summary>
         /// Deletes a Azure Sql Database SErver
         /// </summary>
-        public void Remove(string resourceGroupName, string serverName, string jobAccountName)
+        public void Remove(string resourceGroupName, string serverName, string jobAgentName)
         {
-            GetCurrentSqlClient().JobAccounts.Delete(resourceGroupName, serverName, jobAccountName);
+            GetCurrentSqlClient().JobAgents.Delete(resourceGroupName, serverName, jobAgentName);
         }
 
         /// <summary>

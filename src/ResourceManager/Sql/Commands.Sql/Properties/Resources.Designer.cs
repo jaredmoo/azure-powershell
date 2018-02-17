@@ -10,8 +10,8 @@
 
 namespace Microsoft.Azure.Commands.Sql.Properties {
     using System;
-    
-    
+
+
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
@@ -23,15 +23,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
-        
+
         private static global::System.Resources.ResourceManager resourceMan;
-        
+
         private static global::System.Globalization.CultureInfo resourceCulture;
-        
+
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
         internal Resources() {
         }
-        
+
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return resourceMan;
             }
         }
-        
+
         /// <summary>
         ///   Overrides the current thread's CurrentUICulture property for all
         ///   resource lookups using this strongly typed resource class.
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 resourceCulture = value;
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to More than one Active Directory group with the display name &apos;{0}&apos; was found. Please provide an Azure Active Directory object id to select the correct group. To get the object id use Get-AzureRmADGroup -SearchString &quot;{0}&quot;.
         /// </summary>
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("ADGroupMoreThanOneFound", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Cannot find the Azure Active Directory object &apos;{0}&apos;. Please make sure that the user or group you are authorizing is registered in the current subscription&apos;s Azure Active directory. To get a list of Azure Active Directory groups use Get-AzureRmADGroup, or to get a list of Azure Active Directory users use Get-AzureRmADUser..
         /// </summary>
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("ADObjectNotFound", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to More than one Azure Active Directory user with the display name &apos;{0}&apos; was found. Please provide an Azure Active Directory object id to select the correct user. To get the object id use Get-AzureRmADUser -SearchString &quot;{0}&quot;.
         /// </summary>
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("ADUserMoreThanOneFound", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to The action group &apos;AUDIT_CHANGE_GROUP&apos; is not supported. It will be removed in a future release..
         /// </summary>
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("auditChangeGroupDeprecationMessage", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to In order to enable Threat Detection, please enable database auditing..
         /// </summary>
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("AuditingIsTurnedOff", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to About to process resource.
         /// </summary>
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("BaseConfirmActionProcessMessage", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Database with name: &apos;{0}&apos; already exists in server &apos;{1}&apos;..
         /// </summary>
@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("DatabaseNameExists", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Auditing cannot be enabled . Upgrade to Basic, Standard or Premium Service Tier to enable auditing on your database(s).
         /// </summary>
@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("DatabaseNotInServiceTierForAuditingPolicy", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Cannot set a lower bound which is larger than the higher bound.
         /// </summary>
@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("DataMaskingNumberRuleIntervalDefinitionError", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No dynamic data masking rule is defined for column: &quot;{0}&quot; table &quot;{1}&quot; schema &quot;{2}&quot; .
         /// </summary>
@@ -149,7 +149,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("DataMaskingRuleDoesNotExist", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to The {0} cmdlet is deprecated and will be removed in a future release..
         /// </summary>
@@ -158,7 +158,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("DeprecatedCmdletUsageWarning", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Azure Sql Database Elastic Pool name cannot be specified for this operation.
         /// </summary>
@@ -167,7 +167,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("ElasticPoolDatabaseActivityCancelNotSupported", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Elastic Pool with name: &apos;{0}&apos; already exists in server &apos;{1}&apos;..
         /// </summary>
@@ -176,7 +176,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("ElasticPoolNameExists", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to One or more of the email addresses you entered are not valid..
         /// </summary>
@@ -185,7 +185,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("EmailsAreNotValid", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to {your_password_here}.
         /// </summary>
@@ -194,7 +194,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("EnterPassword", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to {your_user_id_here}.
         /// </summary>
@@ -203,7 +203,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("EnterUserId", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Database to be added with id &apos;{0}&apos; already exists in Failover Group with name: &apos;{1}&apos;  in server &apos;{2}&apos;..
         /// </summary>
@@ -212,7 +212,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("FailoverGroupAddDatabaseAlreadyExists", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Value {0} is too large for the &apos;GracePeriodWithDataLossHours&apos; parameter. Using the largest supported value, {1}..
         /// </summary>
@@ -221,7 +221,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("FailoverGroupDataLossHoursOverflow", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to A value of {0} is not yet supported for the &apos;GracePeriodWithDataLossHours&apos; parameter. Using the smallest supported value, {1}..
         /// </summary>
@@ -230,7 +230,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("FailoverGroupDataLossHoursUnsupportedLowValue", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Failover Group with name: &apos;{0}&apos; already exists in server &apos;{1}&apos;..
         /// </summary>
@@ -239,7 +239,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("FailoverGroupNameExists", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No arguments are provided to remove databases to Failover Group with name: &apos;{0}&apos;  in server &apos;{1}&apos;..
         /// </summary>
@@ -248,7 +248,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("FailoverGroupRemoveDatabaseNoArguments", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Database to be removed with id {0} in Failover Group with name: &apos;{1}&apos;  in server &apos;{2} does not exist&apos;..
         /// </summary>
@@ -257,7 +257,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("FailoverGroupRemoveDatabaseNotExists", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to The Active Directory Group &apos;{0}&apos; is not security enabled. Only Azure Active Directory Security Enabled Groups are supported..
         /// </summary>
@@ -266,7 +266,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("InvalidADGroupNotSecurity", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Cannot use the &apos;None&apos; option with other detection types.
         /// </summary>
@@ -275,7 +275,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("InvalidDetectionTypeList", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Cannot use the None option with other event types..
         /// </summary>
@@ -284,7 +284,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("InvalidEventTypeSet", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Cannot use the &apos;{0}&apos; option with other excluded detection types..
         /// </summary>
@@ -293,7 +293,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("InvalidExcludedDetectionTypeSet", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Please use Set-AzureRmEnvironment to set a valid GraphEndpoint for the current AzureEnvironment..
         /// </summary>
@@ -302,7 +302,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("InvalidGraphEndpoint", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Cannot use audit table retention without specifying TableIdentifier. You may want to use &apos;{0}&apos;..
         /// </summary>
@@ -311,7 +311,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("InvalidRetentionTypeSet", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Please set a valid tenant id in the AzureEnvironment..
         /// </summary>
@@ -320,16 +320,16 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("InvalidTenantId", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Job account with name: &apos;{0}&apos; already exists in server &apos;{1}&apos;..
         /// </summary>
-        internal static string JobAccountNameExists {
+        internal static string JobAgentNameExists {
             get {
-                return ResourceManager.GetString("JobAccountNameExists", resourceCulture);
+                return ResourceManager.GetString("JobAgentNameExists", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to You need to provide at least one email address or set EmailAdmins to True..
         /// </summary>
@@ -338,7 +338,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("NeedToProvideEmail", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to A rule that was defined on the same column already exists..
         /// </summary>
@@ -347,7 +347,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("NewDataMaskingRuleIdAlreadyExistError", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Cannot set auditing policy without a storage account name..
         /// </summary>
@@ -356,7 +356,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("NoStorageAccountWhenConfiguringAuditingPolicy", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Cannot set threat detection policy without a storage account name..
         /// </summary>
@@ -365,7 +365,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("NoStorageAccountWhenConfiguringThreatDetectionPolicy", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to OperationId is required for this operation.
         /// </summary>
@@ -374,7 +374,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("OperationIdRequired", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to PHP Data Objects(PDO) Sample Code:.
         /// </summary>
@@ -383,7 +383,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("PdoTitle", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Error connecting to SQL Server.
         /// </summary>
@@ -392,7 +392,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("PhpConnectionError", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Permanently removing Azure Sql Database &apos;{0}&apos; on server &apos;{1}&apos;..
         /// </summary>
@@ -401,7 +401,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("RemoveAzureSqlDatabaseDescription", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove this Azure Sql Database from Azure Sql Database Failover Group &apos;{0}&apos; on server &apos;{1}&apos;?.
         /// </summary>
@@ -410,7 +410,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("RemoveAzureSqlDatabaseeFromAzureSqlDatabaseFailoverGroupWarning", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Permanently removing Azure Sql Database Elastic Pool &apos;{0}&apos; on server &apos;{1}&apos;..
         /// </summary>
@@ -419,7 +419,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("RemoveAzureSqlDatabaseElasticPoolDescription", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove the Azure Sql Database Elastic Pool &apos;{0}&apos; on server &apos;{1}&apos;?.
         /// </summary>
@@ -428,7 +428,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("RemoveAzureSqlDatabaseElasticPoolWarning", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Permanently removing Azure Sql Database Failover Group &apos;{0}&apos; on server &apos;{1}&apos;..
         /// </summary>
@@ -437,7 +437,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("RemoveAzureSqlDatabaseFailoverGroupDescription", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove the Azure Sql Database Failover Group &apos;{0}&apos; on server &apos;{1}&apos;?.
         /// </summary>
@@ -446,7 +446,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("RemoveAzureSqlDatabaseFailoverGroupWarning", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Permanently removing this Azure Sql Database from  Azure Sql Database Failover Group &apos;{0}&apos; on server &apos;{1}&apos;..
         /// </summary>
@@ -455,7 +455,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("RemoveAzureSqlDatabaseFromAzureSqlDatabaseFailoverGroupDescription", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove the Azure Sql Database &apos;{0}&apos; on server &apos;{1}&apos;?.
         /// </summary>
@@ -464,25 +464,25 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("RemoveAzureSqlDatabaseWarning", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Permanently removing job account &apos;{0}&apos; for Azure Sql Database Server &apos;{1}&apos;..
         /// </summary>
-        internal static string RemoveAzureSqlJobAccountDescription {
+        internal static string RemoveAzureSqlJobAgentDescription {
             get {
-                return ResourceManager.GetString("RemoveAzureSqlJobAccountDescription", resourceCulture);
+                return ResourceManager.GetString("RemoveAzureSqlJobAgentDescription", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove the job account &apos;{0}&apos; for Azure Sql Database Server &apos;{1}&apos;?.
         /// </summary>
-        internal static string RemoveAzureSqlJobAccountWarning {
+        internal static string RemoveAzureSqlJobAgentWarning {
             get {
-                return ResourceManager.GetString("RemoveAzureSqlJobAccountWarning", resourceCulture);
+                return ResourceManager.GetString("RemoveAzureSqlJobAgentWarning", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Removing Azure Sql Server Active Directory Administrator on server &apos;{0}&apos;..
         /// </summary>
@@ -491,7 +491,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("RemoveAzureSqlServerActiveDirectoryAdministratorDescription", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove the Azure Sql Server Active Directory Administrator on server &apos;{0}&apos;?.
         /// </summary>
@@ -500,7 +500,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("RemoveAzureSqlServerActiveDirectoryAdministratorWarning", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Permanently removing Azure Sql Server communication link &apos;{0}&apos; on server &apos;{1}&apos;..
         /// </summary>
@@ -509,7 +509,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("RemoveAzureSqlServerCommunicationLinkDescription", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove the Azure Sql Server communication link &apos;{0}&apos; on server &apos;{1}&apos;?.
         /// </summary>
@@ -518,7 +518,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("RemoveAzureSqlServerCommunicationLinkWarning", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Permanently removing Azure Sql Database Server &apos;{0}&apos;..
         /// </summary>
@@ -527,7 +527,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("RemoveAzureSqlServerDescription", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Permanently removing Azure Sql Disaster Recovery Configuration &apos;{0}&apos; on server &apos;{1}&apos;..
         /// </summary>
@@ -536,7 +536,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("RemoveAzureSqlServerDisasterRecoveryConfigurationDescription", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove the Azure Sql Disaster Recovery Configuration &apos;{0}&apos; on server &apos;{1}&apos;?.
         /// </summary>
@@ -545,7 +545,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("RemoveAzureSqlServerDisasterRecoveryConfigurationWarning", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Permanently removing Azure Sql Server Dns Alias &apos;{0}&apos;.
         /// </summary>
@@ -554,7 +554,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("RemoveAzureSqlServerDnsAliasDescription", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove the Azure Sql Server Dns Alias &apos;{0}&apos;?.
         /// </summary>
@@ -563,7 +563,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("RemoveAzureSqlServerDnsAliasWarning", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Permanently removing Firewall Rule &apos;{0}&apos; for Azure Sql Database Server &apos;{1}&apos;..
         /// </summary>
@@ -572,7 +572,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("RemoveAzureSqlServerFirewallRuleDescription", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove the Firewall Rule &apos;{0}&apos; for Azure Sql Database Server &apos;{1}&apos;?.
         /// </summary>
@@ -581,7 +581,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("RemoveAzureSqlServerFirewallRuleWarning", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Permanently removing Virtual Network Rule &apos;{0}&apos; for Azure Sql Server &apos;{1}&apos;.
         /// </summary>
@@ -590,7 +590,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("RemoveAzureSqlServerVirtualNetworkRuleDescription", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove the Virtual Network Rule &apos;{0}&apos; for Azure Sql Server &apos;{1}&apos;?.
         /// </summary>
@@ -599,7 +599,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("RemoveAzureSqlServerVirtualNetworkRuleWarning", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove the Azure Sql Database Server &apos;{0}&apos;?.
         /// </summary>
@@ -608,7 +608,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("RemoveAzureSqlServerWarning", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Permanently removing Azure Sql Sync Agent &apos;{0}&apos;..
         /// </summary>
@@ -617,7 +617,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("RemoveAzureSqlSyncAgentDescription", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove the Sync Agent &apos;{0}&apos; for  Resource Group &apos;{1}&apos; ?.
         /// </summary>
@@ -626,7 +626,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("RemoveAzureSqlSyncAgentWarning", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Permanently removing Azure Sql Sync Group &apos;{0}&apos;..
         /// </summary>
@@ -635,7 +635,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("RemoveAzureSqlSyncGroupDescription", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove the Sync Group &apos;{0}&apos; for database &apos;{1}&apos;?.
         /// </summary>
@@ -644,7 +644,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("RemoveAzureSqlSyncGroupWarning", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Permanently removing Azure Sql Sync Member &apos;{0}&apos;..
         /// </summary>
@@ -653,7 +653,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("RemoveAzureSqlSyncMemberDescription", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove the Sync Member &apos;{0}&apos; for Sync Group &apos;{1}&apos;?.
         /// </summary>
@@ -662,7 +662,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("RemoveAzureSqlSyncMemberWarning", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Removing data masking rule for column:&quot;{0}&quot; table:&quot;{1}&quot; schema:&quot;{2}&quot;.
         /// </summary>
@@ -671,7 +671,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("RemoveDatabaseDataMaskingRuleDescription", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove the data masking rule for column:&quot;{0}&quot; table:&quot;{1}&quot; schema:&quot;{2}&quot;?.
         /// </summary>
@@ -680,7 +680,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("RemoveDatabaseDataMaskingRuleWarning", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Server communication link with name: &apos;{0}&apos; already exists in server &apos;{1}&apos;..
         /// </summary>
@@ -689,7 +689,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("ServerCommunicationLinkNameExists", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Server Disaster Recovery Configuration already exists in server &apos;{1}&apos;..
         /// </summary>
@@ -698,7 +698,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("ServerDisasterRecoveryConfigurationNameExists", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Server Dns Alias with name: &apos;{0}&apos; already exists..
         /// </summary>
@@ -707,7 +707,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("ServerDnsAliasNameExists", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Firewall Rule with name: &apos;{0}&apos; already exists for server &apos;{1}&apos;..
         /// </summary>
@@ -716,7 +716,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("ServerFirewallRuleNameExists", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Server with name: &apos;{0}&apos; already exists..
         /// </summary>
@@ -725,7 +725,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("ServerNameExists", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Dynamic Data Masking is only available in the latest SQL Database Update (V12). Please upgrade to set it up on your database..
         /// </summary>
@@ -734,16 +734,16 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("ServerNotApplicableForDataMasking", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Job accounts are only available for the latest SQL Database Update (V12). Please upgrade the server &apos;{0}&apos; or choose a different server..
         /// </summary>
-        internal static string ServerNotApplicableForJobAccount {
+        internal static string ServerNotApplicableForJobAgent {
             get {
-                return ResourceManager.GetString("ServerNotApplicableForJobAccount", resourceCulture);
+                return ResourceManager.GetString("ServerNotApplicableForJobAgent", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Threat detection is only available for the latest SQL Database Update (V12). Please upgrade to set it up on your database..
         /// </summary>
@@ -752,7 +752,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("ServerNotApplicableForThreatDetection", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Request for upgrade of server &apos;{0}&apos; already exists..
         /// </summary>
@@ -761,7 +761,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("ServerUpgradeExists", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Virtual Network Rule with name: &apos;{0}&apos; already exists for server &apos;{1}&apos;.
         /// </summary>
@@ -770,7 +770,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("ServerVirtualNetworkRuleNameExists", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Updating auto execute status of the advisor &apos;{0}&apos; to &apos;{1}&apos;..
         /// </summary>
@@ -779,7 +779,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("SetAdvisorAutoExecuteStatusDescription", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to update auto execute status of the advisor &apos;{0}&apos; to &apos;{1}&apos;?.
         /// </summary>
@@ -788,7 +788,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("SetAdvisorAutoExecuteStatusWarning", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Warning: This command sets the key &apos;{0}&apos; as the protector, removing access to this key in the future may result in data loss on this server. Learn about best practices at aka.ms/sqltdewithbyok. Do you want to proceed?.
         /// </summary>
@@ -797,7 +797,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("SetAzureSqlServerTransparentDataEncryptionProtectorWarning", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to A data masking rule for the column does not exist.
         /// </summary>
@@ -806,7 +806,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("SetDataMaskingRuleIdDoesNotExistError", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No Set Options were provided.
         /// </summary>
@@ -815,7 +815,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("SetDisasterRecoveryConfigurationNoOptionProvided", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Updating state of recommended action &apos;{0}&apos; to &apos;{1}&apos;..
         /// </summary>
@@ -824,7 +824,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("SetRecommendedActionStateDescription", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to update state of the recommended action &apos;{0}&apos; to &apos;{1}&apos;.
         /// </summary>
@@ -833,7 +833,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("SetRecommendedActionStateWarning", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No Set Options were provided.
         /// </summary>
@@ -842,7 +842,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("SetSecondaryNoOptionProvided", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Confirm.
         /// </summary>
@@ -851,7 +851,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("ShouldProcessCaption", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to SQL Server Extension Sample Code:.
         /// </summary>
@@ -860,7 +860,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("sqlSampleTitle", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Azure Sql Database Elastic Pool name is required for this operation.
         /// </summary>
@@ -869,7 +869,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("StandaloneDatabaseActivityNotSupported", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Stopping upgrade for Azure Sql Database Server &apos;{0}&apos;..
         /// </summary>
@@ -878,7 +878,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("StopAzureSqlServerUpgradeDescription", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to stop the upgrade for Azure Sql Database Server &apos;{0}&apos;?.
         /// </summary>
@@ -887,7 +887,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("StopAzureSqlServerUpgradeWarning", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Cancelling updateslo operation for database &apos;{0}&apos; under server &apos;{1}&apos;..
         /// </summary>
@@ -896,7 +896,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("StopDatabaseActivityDescription", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to cancel updateslo operation for database &apos;{0}&apos; under server &apos;{1}&apos;?.
         /// </summary>
@@ -905,7 +905,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("StopDatabaseActivityWarning", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Cannot find a storage account with the name &apos;{0}&apos;. It either does not exist, associated with a different subscription or you do not have the appropriate credentials to access it..
         /// </summary>
@@ -914,7 +914,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("StorageAccountNotFound", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Sync Agent with name: ‘{0}&apos; already exists in Resource Group &apos;{1}&apos;..
         /// </summary>
@@ -923,7 +923,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("SyncAgentNameExists", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Sync Group with name: ‘{0}&apos; already exists in database &apos;{1}&apos;..
         /// </summary>
@@ -932,7 +932,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("SyncGroupNameExists", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Sync Member with name: ‘{0}&apos; already exists in Sync Group &apos;{1}&apos;..
         /// </summary>
@@ -941,7 +941,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("SyncMemberNameExists", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Cannot use a server&apos;s auditing policy before it is configured..
         /// </summary>
