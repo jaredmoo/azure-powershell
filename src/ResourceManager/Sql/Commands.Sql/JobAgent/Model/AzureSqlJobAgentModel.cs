@@ -14,12 +14,12 @@
 
 using System.Collections.Generic;
 
-namespace Microsoft.Azure.Commands.Sql.JobAccount.Model
+namespace Microsoft.Azure.Commands.Sql.JobAgent.Model
 {
     /// <summary>
     /// Represents the core properties of an Azure Sql Job Account
     /// </summary>
-    public class AzureSqlJobAccountModel
+    public class AzureSqlJobAgentModel
     {
         /// <summary>
         /// Gets or sets the name of the resource group the job account is in
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.Sql.JobAccount.Model
         /// <summary>
         /// Gets or sets the name of the job account
         /// </summary>
-        public string JobAccountName { get; set; }
+        public string JobAgentName { get; set; }
 
         /// <summary>
         /// Gets or sets the location the job account is in

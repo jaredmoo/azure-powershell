@@ -196,13 +196,13 @@
     <Compile Include="ServerDnsAlias\Cmdlet\NewAzureSqlServerDnsAlias.cs" />
     <Compile Include="ServerDnsAlias\Services\AzureSqlServerDnsAliasAdapter.cs" />
     <Compile Include="ServerDnsAlias\Services\AzureSqlServerDnsAliasCommunicator.cs" />
-    <Compile Include="JobAccount\Cmdlet\AzureSqlJobAccountCmdletBase.cs" />
-    <Compile Include="JobAccount\Cmdlet\GetAzureSqlJobAccount.cs" />
-    <Compile Include="JobAccount\Cmdlet\NewAzureSqlJobAccount.cs" />
-    <Compile Include="JobAccount\Cmdlet\RemoveAzureSqlJobAccount.cs" />
-    <Compile Include="JobAccount\Model\AzureSqlJobAccountModel.cs" />
-    <Compile Include="JobAccount\Services\AzureSqlJobAccountAdapter.cs" />
-    <Compile Include="JobAccount\Services\AzureSqlJobAccountCommunicator.cs" />
+    <Compile Include="JobAgent\Cmdlet\AzureSqlJobAgentCmdletBase.cs" />
+    <Compile Include="JobAgent\Cmdlet\GetAzureSqlJobAgent.cs" />
+    <Compile Include="JobAgent\Cmdlet\NewAzureSqlJobAgent.cs" />
+    <Compile Include="JobAgent\Cmdlet\RemoveAzureSqlJobAgent.cs" />
+    <Compile Include="JobAgent\Model\AzureSqlJobAgentModel.cs" />
+    <Compile Include="JobAgent\Services\AzureSqlJobAgentAdapter.cs" />
+    <Compile Include="JobAgent\Services\AzureSqlJobAgentCommunicator.cs" />
     <Compile Include="ThreatDetection\Cmdlet\GetAzureSqlServerThreatDetection.cs" />
     <Compile Include="ThreatDetection\Cmdlet\RemoveSqlServerThreatDetection.cs" />
     <Compile Include="ThreatDetection\Cmdlet\SetAzureSqlServerThreatDetection.cs" />
@@ -458,10 +458,8 @@
       <HintPath>..\..\..\packages\Microsoft.Azure.KeyVault.Core.1.0.0\lib\net40\Microsoft.Azure.KeyVault.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <!--<Reference Include="Microsoft.Azure.Management.Sql, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Sql.1.3.0-preview\lib\net452\Microsoft.Azure.Management.Sql.dll</HintPath>-->
     <Reference Include="Microsoft.Azure.Management.Sql, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Sql.1.10.0-preview\lib\net452\Microsoft.Azure.Management.Sql.dll</HintPath>
+      <HintPath>C:\git\azure-sdk-for-net\src\SDKs\SqlManagement\Management.Sql\bin\Release\net452</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Storage">
