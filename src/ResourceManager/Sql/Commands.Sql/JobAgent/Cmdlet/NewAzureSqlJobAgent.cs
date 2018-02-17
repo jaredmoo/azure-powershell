@@ -17,14 +17,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 
-namespace Microsoft.Azure.Commands.Sql.JobAccount.Cmdlet
+namespace Microsoft.Azure.Commands.Sql.JobAgent.Cmdlet
 {
     /// <summary>
-    /// Defines the Get-AzureRmSqlJobAccount cmdlet
+    /// Defines the Get-AzureRmSqlJobAgent cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmSqlJobAccount",
+    [Cmdlet(VerbsCommon.New, "AzureRmSqlJobAgent",
         ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true)]
-    public class NewAzureSqlJobAccount : AzureSqlJobAccountCmdletBase
+    public class NewAzureSqlJobAgent : AzureSqlJobAgentCmdletBase
     {
         /// <summary>
         /// Gets or sets the name of the database server to use.
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.Sql.JobAccount.Cmdlet
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "SQL Database job account name.")]
         [ValidateNotNullOrEmpty]
-        public string JobAccountName { get; set; }
+        public string JobAgentName { get; set; }
 
         /// <summary>
         /// Gets or sets the name of the database to use.
@@ -64,12 +64,12 @@ namespace Microsoft.Azure.Commands.Sql.JobAccount.Cmdlet
         /// Check to see if the job account already exists in this resource group.
         /// </summary>
         /// <returns>Null if the job account doesn't exist. Otherwise throws exception</returns>
-        protected override IEnumerable<Model.AzureSqlJobAccountModel> GetEntity()
+        protected override IEnumerable<Model.AzureSqlJobAgentModel> GetEntity()
         {
             try
             {
-                WriteDebugWithTimestamp("JobAccountName: {0}", JobAccountName);
-                ModelAdapter.GetJobAccount(this.ResourceGroupName, this.ServerName, this.JobAccountName);
+                WriteDebugWithTimestamp("JobAgentName: {0}", JobAgentName);
+                ModelAdapter.GetJobAgent(this.ResourceGroupName, this.ServerName, this.JobAgentName);
             }
             catch (CloudException ex)
             {
@@ -85,8 +85,8 @@ namespace Microsoft.Azure.Commands.Sql.JobAccount.Cmdlet
 
             // The job account already exists
             throw new PSArgumentException(
-                string.Format(Properties.Resources.JobAccountNameExists, this.JobAccountName, this.ServerName),
-                "JobAccountName");
+                string.Format(Properties.Resources.JobAgentNameExists, this.JobAgentName, this.ServerName),
+                "JobAgentName");
         }
 
         /// <summary>
@@ -94,18 +94,18 @@ namespace Microsoft.Azure.Commands.Sql.JobAccount.Cmdlet
         /// </summary>
         /// <param name="model">This is null since the server doesn't exist yet</param>
         /// <returns>The generated model from user input</returns>
-        protected override IEnumerable<Model.AzureSqlJobAccountModel> ApplyUserInputToModel(IEnumerable<Model.AzureSqlJobAccountModel> model)
+        protected override IEnumerable<Model.AzureSqlJobAgentModel> ApplyUserInputToModel(IEnumerable<Model.AzureSqlJobAgentModel> model)
         {
-            string location = ModelAdapter.GetServerLocationAndThrowIfJobAccountNotSupportedByServer(this.ResourceGroupName, this.ServerName);
+            string location = ModelAdapter.GetServerLocationAndThrowIfJobAgentNotSupportedByServer(this.ResourceGroupName, this.ServerName);
 
-            List<Model.AzureSqlJobAccountModel> newEntity = new List<Model.AzureSqlJobAccountModel>
+            List<Model.AzureSqlJobAgentModel> newEntity = new List<Model.AzureSqlJobAgentModel>
             {
-                new Model.AzureSqlJobAccountModel
+                new Model.AzureSqlJobAgentModel
                 {
                     Location = location,
                     ResourceGroupName = this.ResourceGroupName,
                     ServerName = this.ServerName,
-                    JobAccountName = this.JobAccountName,
+                    JobAgentName = this.JobAgentName,
                     DatabaseName = this.DatabaseName,
                     Tags = this.Tags
                 }
@@ -118,11 +118,11 @@ namespace Microsoft.Azure.Commands.Sql.JobAccount.Cmdlet
         /// </summary>
         /// <param name="entity">The job account to create</param>
         /// <returns>The created job account</returns>
-        protected override IEnumerable<Model.AzureSqlJobAccountModel> PersistChanges(IEnumerable<Model.AzureSqlJobAccountModel> entity)
+        protected override IEnumerable<Model.AzureSqlJobAgentModel> PersistChanges(IEnumerable<Model.AzureSqlJobAgentModel> entity)
         {
-            return new List<Model.AzureSqlJobAccountModel>
+            return new List<Model.AzureSqlJobAgentModel>
             {
-                ModelAdapter.UpsertJobAccount(entity.First())
+                ModelAdapter.UpsertJobAgent(entity.First())
             };
         }
     }

@@ -14,22 +14,22 @@
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Sql.Common;
-using Microsoft.Azure.Commands.Sql.JobAccount.Adapter;
-using Microsoft.Azure.Commands.Sql.JobAccount.Model;
+using Microsoft.Azure.Commands.Sql.JobAgent.Adapter;
+using Microsoft.Azure.Commands.Sql.JobAgent.Model;
 using System.Collections.Generic;
 
-namespace Microsoft.Azure.Commands.Sql.JobAccount.Cmdlet
+namespace Microsoft.Azure.Commands.Sql.JobAgent.Cmdlet
 {
-    public abstract class AzureSqlJobAccountCmdletBase : AzureSqlCmdletBase<IEnumerable<AzureSqlJobAccountModel>, AzureSqlJobAccountAdapter>
+    public abstract class AzureSqlJobAgentCmdletBase : AzureSqlCmdletBase<IEnumerable<AzureSqlJobAgentModel>, AzureSqlJobAgentAdapter>
     {
         /// <summary>
         /// Intializes the model adapter
         /// </summary>
         /// <param name="subscription">The subscription the cmdlets are operation under</param>
         /// <returns>The server adapter</returns>
-        protected override AzureSqlJobAccountAdapter InitModelAdapter(IAzureSubscription subscription)
+        protected override AzureSqlJobAgentAdapter InitModelAdapter(IAzureSubscription subscription)
         {
-            return new AzureSqlJobAccountAdapter(DefaultContext);
+            return new AzureSqlJobAgentAdapter(DefaultContext);
         }
     }
 }

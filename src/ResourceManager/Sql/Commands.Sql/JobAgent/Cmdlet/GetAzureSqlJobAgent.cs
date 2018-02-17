@@ -12,17 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Sql.JobAccount.Model;
+using Microsoft.Azure.Commands.Sql.JobAgent.Model;
 using System.Collections.Generic;
 using System.Management.Automation;
 
-namespace Microsoft.Azure.Commands.Sql.JobAccount.Cmdlet
+namespace Microsoft.Azure.Commands.Sql.JobAgent.Cmdlet
 {
     /// <summary>
-    /// Defines the Get-AzureRmSqlJobAccount cmdlet
+    /// Defines the Get-AzureRmSqlJobAgent cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmSqlJobAccount", ConfirmImpact = ConfirmImpact.None)]
-    public class GetAzureSqlJobAccount : AzureSqlJobAccountCmdletBase
+    [Cmdlet(VerbsCommon.Get, "AzureRmSqlJobAgent", ConfirmImpact = ConfirmImpact.None)]
+    public class GetAzureSqlJobAgent : AzureSqlJobAgentCmdletBase
     {
         /// <summary>
         /// Gets or sets the name of the database server to use.
@@ -42,24 +42,24 @@ namespace Microsoft.Azure.Commands.Sql.JobAccount.Cmdlet
             Position = 2,
             HelpMessage = "SQL Database job account name.")]
         [ValidateNotNullOrEmpty]
-        public string JobAccountName { get; set; }
+        public string JobAgentName { get; set; }
 
         /// <summary>
         /// Gets one or more job accounts from the service.
         /// </summary>
         /// <returns>A single server</returns>
-        protected override IEnumerable<AzureSqlJobAccountModel> GetEntity()
+        protected override IEnumerable<AzureSqlJobAgentModel> GetEntity()
         {
-            if (this.MyInvocation.BoundParameters.ContainsKey("JobAccountName"))
+            if (this.MyInvocation.BoundParameters.ContainsKey("JobAgentName"))
             {
-                return new List<AzureSqlJobAccountModel>
+                return new List<AzureSqlJobAgentModel>
                 {
-                    ModelAdapter.GetJobAccount(this.ResourceGroupName, this.ServerName, this.JobAccountName)
+                    ModelAdapter.GetJobAgent(this.ResourceGroupName, this.ServerName, this.JobAgentName)
                 };
             }
             else
             {
-                return ModelAdapter.GetJobAccount(this.ResourceGroupName, this.ServerName);
+                return ModelAdapter.GetJobAgent(this.ResourceGroupName, this.ServerName);
             }
         }
 
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.Sql.JobAccount.Cmdlet
         /// </summary>
         /// <param name="entity">The entity retrieved</param>
         /// <returns>The unchanged entity</returns>
-        protected override IEnumerable<AzureSqlJobAccountModel> PersistChanges(IEnumerable<AzureSqlJobAccountModel> entity)
+        protected override IEnumerable<AzureSqlJobAgentModel> PersistChanges(IEnumerable<AzureSqlJobAgentModel> entity)
         {
             return entity;
         }
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Commands.Sql.JobAccount.Cmdlet
         /// </summary>
         /// <param name="model">The model to modify</param>
         /// <returns>The input model</returns>
-        protected override IEnumerable<AzureSqlJobAccountModel> ApplyUserInputToModel(IEnumerable<AzureSqlJobAccountModel> model)
+        protected override IEnumerable<AzureSqlJobAgentModel> ApplyUserInputToModel(IEnumerable<AzureSqlJobAgentModel> model)
         {
             return model;
         }
