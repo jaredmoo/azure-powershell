@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+    <metadata>
+        <id>Microsoft.Azure.Management.Sql</id>
+        <version>1.12.0-preview</version>
+        <authors>Microsoft</authors>
+        <owners>Microsoft</owners>
+        <licenseUrl>https://raw.githubusercontent.com/Microsoft/dotnet/master/LICENSE</licenseUrl>
+        <projectUrl>https://github.com/Azure/azure-sdk-for-net</projectUrl>
+        <iconUrl>http://go.microsoft.com/fwlink/?LinkID=288890</iconUrl>
+        <requireLicenseAcceptance>true</requireLicenseAcceptance>
+        <description>Azure SQL Management SDK library</description>
+        <releaseNotes>New features:
+- Added support for job agent</releaseNotes>
+        <copyright>© Microsoft Corporation. All rights reserved</copyright>
+        <tags>Microsoft Azure SQL Management SQL SQL Management Sql_2014-04-01 Sql_2015-05-01-preview Sql_2017-03-01-preview</tags>
+        <dependencies>
+            <group targetFramework=".NETFramework4.5.2">
+                <dependency id="Microsoft.Rest.ClientRuntime" version="[2.3.10, 3.0.0)" exclude="Build,Analyzers" />
+                <dependency id="Microsoft.Rest.ClientRuntime.Azure" version="[3.3.10, 4.0.0)" exclude="Build,Analyzers" />
+                <dependency id="Newtonsoft.Json" version="6.0.8" exclude="Build,Analyzers" />
+            </group>
+            <group targetFramework=".NETStandard1.4">
+                <dependency id="Microsoft.Rest.ClientRuntime" version="[2.3.10, 3.0.0)" exclude="Build,Analyzers" />
+                <dependency id="Microsoft.Rest.ClientRuntime.Azure" version="[3.3.10, 4.0.0)" exclude="Build,Analyzers" />
+                <dependency id="NETStandard.Library" version="1.6.1" exclude="Build,Analyzers" />
+                <dependency id="Newtonsoft.Json" version="9.0.1" exclude="Build,Analyzers" />
+                <dependency id="System.Net.Http" version="4.3.0" exclude="Build,Analyzers" />
+            </group>
+        </dependencies>
+    </metadata>
+    <files>
+        <file src="lib\net452\Microsoft.Azure.Management.Sql.dll" target="lib\net452\Microsoft.Azure.Management.Sql.dll" />
+        <file src="lib\net452\Microsoft.Azure.Management.Sql.runtimeconfig.json" target="lib\net452\Microsoft.Azure.Management.Sql.runtimeconfig.json" />
+        <file src="lib\net452\Microsoft.Azure.Management.Sql.xml" target="lib\net452\Microsoft.Azure.Management.Sql.xml" />
+        <file src="lib\netstandard1.4\Microsoft.Azure.Management.Sql.dll" target="lib\netstandard1.4\Microsoft.Azure.Management.Sql.dll" />
+        <file src="lib\netstandard1.4\Microsoft.Azure.Management.Sql.runtimeconfig.json" target="lib\netstandard1.4\Microsoft.Azure.Management.Sql.runtimeconfig.json" />
+        <file src="lib\netstandard1.4\Microsoft.Azure.Management.Sql.xml" target="lib\netstandard1.4\Microsoft.Azure.Management.Sql.xml" />
+    </files>
+</package>
