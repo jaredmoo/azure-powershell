@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzureRmSqlJobAgent
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Deletes a job agent.
 
 ## SYNTAX
 
@@ -19,16 +19,24 @@ Remove-AzureRmSqlJobAgent [-ServerName] <String> [-JobAgentName] <String> [-Forc
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Remove-AzureRmSqlJobAgent** cmdlet deletes an Azure SQL job agent.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Remove-AzureRmSqlJobAgent -ResourceGroupName rg1 -ServerName server1 -JobAgentName agent1
+
+
+ResourceGroupName : rg1
+ServerName        : server1
+JobAgentName      : agent1
+Location          : centralus
+DatabaseName      : db1
+Tags              :
 ```
 
-{{ Add example description here }}
+This command deletes a job agent named agent1 in the server named server1.
 
 ## PARAMETERS
 
