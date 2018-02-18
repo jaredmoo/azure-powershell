@@ -22,8 +22,7 @@ namespace Microsoft.Azure.Commands.Sql.JobAgent.Cmdlet
     /// <summary>
     /// Defines the Get-AzureRmSqlJobAgent cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmSqlJobAgent",
-        ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.New, "AzureRmSqlJobAgent", SupportsShouldProcess = true)]
     public class NewAzureSqlJobAgent : AzureSqlJobAgentCmdletBase
     {
         /// <summary>
