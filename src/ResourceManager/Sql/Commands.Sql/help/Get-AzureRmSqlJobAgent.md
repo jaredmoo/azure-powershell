@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzureRmSqlJobAgent
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Gets one or more job agents in a server.
 
 ## SYNTAX
 
@@ -18,16 +18,46 @@ Get-AzureRmSqlJobAgent [-ServerName] <String> [[-JobAgentName] <String>] [-Resou
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Get-AzureRmSqlJobAgent** cmdlet gets one or more Azure SQL job accounts from an Azure SQL Database Server.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Get all job agents in a server
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzureRmSqlJobAgent -ResourceGroupName rg1 -ServerName server1
+
+
+ResourceGroupName : rg1
+ServerName        : server1
+JobAgentName      : agent1
+Location          : centralus
+DatabaseName      : db1
+Tags              :
+
+ResourceGroupName : rg1
+ServerName        : server1
+JobAgentName      : agent2
+Location          : centralus
+DatabaseName      : db2
+Tags              :
 ```
 
-{{ Add example description here }}
+This command gets all job agents in the server named server1.
+
+### Example 2: Get a job agent by name
+```powershell
+PS C:\> Get-AzureRmSqlJobAgent -ResourceGroupName rg1 -ServerName server1 -JobAgentName agent1
+
+
+ResourceGroupName : rg1
+ServerName        : server1
+JobAgentName      : agent1
+Location          : centralus
+DatabaseName      : db1
+Tags              :
+```
+
+This command gets a job agent named agent1 in the server named server1.
 
 ## PARAMETERS
 

@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzureRmSqlJobAgent
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Creates a new job agent.
 
 ## SYNTAX
 
@@ -19,16 +19,24 @@ New-AzureRmSqlJobAgent -ServerName <String> -JobAgentName <String> -DatabaseName
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **New-AzureRmSqlJobAgent** cmdlet creates an Azure SQL job account. The job agent must be linked to an existing Azure SQL database where the job definitions, status, and history will be stored.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzureRmSqlJobAgent -ResourceGroupName rg1 -ServerName server1 -JobAgentName agent1 -DatabaseName db1
+
+
+ResourceGroupName : rg1
+ServerName        : server1
+JobAgentName      : agent1
+Location          : centralus
+DatabaseName      : db1
+Tags              :
 ```
 
-{{ Add example description here }}
+This command creates a new job agents in the server named server1. The job definitions, status, and history will be stored in the database named db1.
 
 ## PARAMETERS
 
