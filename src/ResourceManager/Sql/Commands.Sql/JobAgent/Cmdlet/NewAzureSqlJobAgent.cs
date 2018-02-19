@@ -59,8 +59,7 @@ namespace Microsoft.Azure.Commands.Sql.JobAgent.Cmdlet
         /// </summary>
         [Parameter(Mandatory = false,
             HelpMessage = "The tags to associate with the Azure Sql Job Account")]
-        [Alias("Tag")]
-        public Hashtable Tags { get; set; }
+        public Hashtable Tag { get; set; }
 
         /// <summary>
         /// Gets or sets whether or not to run this cmdlet in the background as a job
@@ -115,7 +114,7 @@ namespace Microsoft.Azure.Commands.Sql.JobAgent.Cmdlet
                     ServerName = this.ServerName,
                     JobAgentName = this.JobAgentName,
                     DatabaseName = this.DatabaseName,
-                    Tags = TagsConversionHelper.CreateTagDictionary(Tags, validate: true),
+                    Tags = TagsConversionHelper.CreateTagDictionary(Tag, validate: true),
                 }
             };
             return newEntity;
