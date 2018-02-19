@@ -12,9 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.Sql.JobAgent.Cmdlet
@@ -57,7 +59,14 @@ namespace Microsoft.Azure.Commands.Sql.JobAgent.Cmdlet
         /// </summary>
         [Parameter(Mandatory = false,
             HelpMessage = "The tags to associate with the Azure Sql Job Account")]
-        public Dictionary<string, string> Tags { get; set; }
+        [Alias("Tag")]
+        public Hashtable Tags { get; set; }
+
+        /// <summary>
+        /// Gets or sets whether or not to run this cmdlet in the background as a job
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
 
         /// <summary>
         /// Check to see if the job account already exists in this resource group.
@@ -106,7 +115,7 @@ namespace Microsoft.Azure.Commands.Sql.JobAgent.Cmdlet
                     ServerName = this.ServerName,
                     JobAgentName = this.JobAgentName,
                     DatabaseName = this.DatabaseName,
-                    Tags = this.Tags
+                    Tags = TagsConversionHelper.CreateTagDictionary(Tags, validate: true),
                 }
             };
             return newEntity;
