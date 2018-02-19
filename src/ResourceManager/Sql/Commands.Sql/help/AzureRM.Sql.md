@@ -107,6 +107,9 @@ Gets elastic pool recommendations.
 ### [Get-AzureRmSqlElasticPoolRecommendedAction](Get-AzureRmSqlElasticPoolRecommendedAction.md)
 Gets one or more recommended actions for an Azure SQL Elastic Pool Advisor.
 
+### [Get-AzureRmSqlJobAgent](Get-AzureRmSqlJobAgent.md)
+Gets one or more job agents in a server.
+
 ### [Get-AzureRmSqlServer](Get-AzureRmSqlServer.md)
 Returns information about SQL Database servers.
 
@@ -206,6 +209,9 @@ Creates a secondary database for an existing database and starts data replicatio
 ### [New-AzureRmSqlElasticPool](New-AzureRmSqlElasticPool.md)
 Creates an elastic database pool for a SQL Database.
 
+### [New-AzureRmSqlJobAgent](New-AzureRmSqlJobAgent.md)
+Creates a new job agent.
+
 ### [New-AzureRmSqlServer](New-AzureRmSqlServer.md)
 Creates a SQL Database server.
 
@@ -259,6 +265,9 @@ Removes the threat detection policy from a database.
 
 ### [Remove-AzureRmSqlElasticPool](Remove-AzureRmSqlElasticPool.md)
 Deletes an elastic database pool.
+
+### [Remove-AzureRmSqlJobAgent](Remove-AzureRmSqlJobAgent.md)
+Deletes a job agent.
 
 ### [Remove-AzureRmSqlServer](Remove-AzureRmSqlServer.md)
 Removes an Azure SQL Database server.

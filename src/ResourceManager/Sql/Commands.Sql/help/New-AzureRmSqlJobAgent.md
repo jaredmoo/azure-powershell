@@ -13,9 +13,9 @@ Creates a new job agent.
 ## SYNTAX
 
 ```
-New-AzureRmSqlJobAgent -ServerName <String> -JobAgentName <String> -DatabaseName <String>
- [-Tags <System.Collections.Generic.Dictionary`2[System.String,System.String]>] [-ResourceGroupName] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzureRmSqlJobAgent -ServerName <String> -JobAgentName <String> -DatabaseName <String> [-Tags <Hashtable>]
+ [-AsJob] [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,7 +24,7 @@ The **New-AzureRmSqlJobAgent** cmdlet creates an Azure SQL job account. The job 
 ## EXAMPLES
 
 ### Example 1
-```powershell
+```
 PS C:\> New-AzureRmSqlJobAgent -ResourceGroupName rg1 -ServerName server1 -JobAgentName agent1 -DatabaseName db1
 
 
@@ -39,6 +39,19 @@ Tags              :
 This command creates a new job agents in the server named server1. The job definitions, status, and history will be stored in the database named db1.
 
 ## PARAMETERS
+
+### -AsJob
+Run cmdlet in the background```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DatabaseName
 SQL Database database name.
@@ -119,9 +132,9 @@ Accept wildcard characters: False
 The tags to associate with the Azure Sql Job Account
 
 ```yaml
-Type: System.Collections.Generic.Dictionary`2[System.String,System.String]
+Type: Hashtable
 Parameter Sets: (All)
-Aliases:
+Aliases: Tag
 
 Required: False
 Position: Named
@@ -162,13 +175,11 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### System.String
-
 
 ## OUTPUTS
 
