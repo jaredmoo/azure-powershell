@@ -130,13 +130,12 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Tags
+### -Tag
 The tags to associate with the Azure Sql Job Account
 
 ```yaml
 Type: Hashtable
 Parameter Sets: (All)
-Aliases: Tag
 
 Required: False
 Position: Named
