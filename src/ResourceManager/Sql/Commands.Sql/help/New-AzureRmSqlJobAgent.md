@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
 Module Name: AzureRM.Sql
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/new-azurermsqljobagent
 schema: 2.0.0
 ---
 
@@ -13,7 +13,7 @@ Creates a new job agent.
 ## SYNTAX
 
 ```
-New-AzureRmSqlJobAgent -ServerName <String> -JobAgentName <String> -DatabaseName <String> [-Tags <Hashtable>]
+New-AzureRmSqlJobAgent -ServerName <String> -JobAgentName <String> -DatabaseName <String> [-Tag <Hashtable>]
  [-AsJob] [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -136,6 +136,7 @@ The tags to associate with the Azure Sql Job Account
 ```yaml
 Type: Hashtable
 Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named

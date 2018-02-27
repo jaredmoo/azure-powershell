@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
 Module Name: AzureRM.Sql
 ms.assetid: 2E4F5C27-C50F-4133-B193-BC477BCD6778
@@ -168,7 +168,7 @@ The acceptable values for this parameter are:
 Type: DatabaseEdition
 Parameter Sets: Update
 Aliases:
-Accepted values: None, Premium, Basic, Standard, DataWarehouse, Stretch
+Accepted values: None, Premium, Basic, Standard, DataWarehouse, Stretch, Free, PremiumRS
 
 Required: False
 Position: Named
