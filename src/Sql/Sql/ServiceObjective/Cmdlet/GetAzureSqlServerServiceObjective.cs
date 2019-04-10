@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using Microsoft.Azure.Commands.Sql.ServiceObjective.Model;
 using System.Collections.Generic;
 using System.Management.Automation;
@@ -43,16 +44,24 @@ namespace Microsoft.Azure.Commands.Sql.ServiceObjective.Cmdlet
         {
             ICollection<AzureSqlServerServiceObjectiveModel> results = null;
 
-            if (this.MyInvocation.BoundParameters.ContainsKey("ServiceObjectiveName") && !WildcardPattern.ContainsWildcardCharacters(ServiceObjectiveName))
+            switch (this.ParameterSetName)
             {
-                results = new List<AzureSqlServerServiceObjectiveModel>
-                {
-                    ModelAdapter.GetServiceObjective(this.ResourceGroupName, this.ServerName, this.ServiceObjectiveName)
-                };
-            }
-            else
-            {
-                results = ModelAdapter.ListServiceObjectives(this.ResourceGroupName, this.ServerName);
+                case ByServerNameParameterSet:
+                    if (this.MyInvocation.BoundParameters.ContainsKey("ServiceObjectiveName"))
+                    {
+                        results = ModelAdapter.GetServiceObjective(
+                            this.ResourceGroupName,
+                            this.ServerName,
+                            this.ServiceObjectiveName);
+                    }
+                    else
+                    {
+                        results = ModelAdapter.ListServiceObjectives(this.ResourceGroupName, this.ServerName);
+                    }
+                case ByLocationNameParameterSet:
+                    results = ModelAdapter.ListServiceObjectives(this.LocationName);
+                default:
+                    throw new ArgumentException("Unhandled parameter set " + this.ParameterSetName);
             }
 
             return SubResourceWildcardFilter(ServiceObjectiveName, results);

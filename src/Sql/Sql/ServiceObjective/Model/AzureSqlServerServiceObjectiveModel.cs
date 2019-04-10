@@ -54,5 +54,15 @@ namespace Microsoft.Azure.Commands.Sql.ServiceObjective.Model
         /// Gets or sets Whether or no the Service Objective is a system value
         /// </summary>
         public bool IsSystem { get; set; }
+
+        public string Edition { get; set; }
+
+        public string Sku { get; set; }
+
+        public string Family { get; set; }
+
+        public int? Capacity { get; set; }
+
+        public string CapacityUnit { get; set; }
     }
 }
