@@ -32,7 +32,8 @@ namespace Microsoft.Azure.Commands.Sql.ServiceObjective.Cmdlet
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             Position = 2,
-            HelpMessage = "Azure Sql Database service objective name.")]
+            HelpMessage = "Azure Sql Database service objective name.",
+            ParameterSetName = ByServerNameParameterSet)]
         [ValidateNotNullOrEmpty]
         public string ServiceObjectiveName { get; set; }
 
