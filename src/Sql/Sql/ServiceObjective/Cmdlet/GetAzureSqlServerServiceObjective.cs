@@ -59,8 +59,10 @@ namespace Microsoft.Azure.Commands.Sql.ServiceObjective.Cmdlet
                     {
                         results = ModelAdapter.ListServiceObjectives(this.ResourceGroupName, this.ServerName);
                     }
+                    break;
                 case ByLocationNameParameterSet:
                     results = ModelAdapter.ListServiceObjectives(this.LocationName);
+                    break;
                 default:
                     throw new ArgumentException("Unhandled parameter set " + this.ParameterSetName);
             }
