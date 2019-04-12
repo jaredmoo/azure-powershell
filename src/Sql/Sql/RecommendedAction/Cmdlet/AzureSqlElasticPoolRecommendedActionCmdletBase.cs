@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Sql.RecommendedAction.Cmdlet
     /// <summary>
     /// The base class of cmdlets for Azure SQL ElasticPool Recommended Action
     /// </summary>
-    public abstract class AzureSqlElasticPoolRecommendedActionCmdletBase : AzureSqlCmdletBase<IEnumerable<AzureSqlElasticPoolRecommendedActionModel>, AzureSqlElasticPoolRecommendedActionAdapter>
+    public abstract class AzureSqlElasticPoolRecommendedActionCmdletBase : AzureSqlCmdletResourceGroupBase<IEnumerable<AzureSqlElasticPoolRecommendedActionModel>, AzureSqlElasticPoolRecommendedActionAdapter>
     {
         /// <summary>
         /// Gets or sets the name of the server to use.

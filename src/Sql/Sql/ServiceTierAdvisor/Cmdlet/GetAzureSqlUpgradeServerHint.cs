@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Sql.ServiceTierAdvisor.Cmdlet
 {
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlServerUpgradeHint", ConfirmImpact = ConfirmImpact.None, SupportsShouldProcess = true)]
     [OutputType(typeof(UpgradeServerHint))]
-    public class GetAzureSqlServerUpgradeHint : AzureSqlCmdletBase<UpgradeServerHint, AzureSqlServiceTierAdvisorAdapter>
+    public class GetAzureSqlServerUpgradeHint : AzureSqlCmdletResourceGroupBase<UpgradeServerHint, AzureSqlServiceTierAdvisorAdapter>
     {
         /// <summary>
         /// Gets or sets the name of the server.

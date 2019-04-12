@@ -26,7 +26,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
 {
     public abstract class AzureSqlDatabaseBackupLongTermRetentionPolicyCmdletBase : 
-        AzureSqlCmdletBase<IEnumerable<AzureSqlDatabaseBackupLongTermRetentionPolicyModel>, AzureSqlDatabaseBackupAdapter>
+        AzureSqlCmdletResourceGroupBase<IEnumerable<AzureSqlDatabaseBackupLongTermRetentionPolicyModel>, AzureSqlDatabaseBackupAdapter>
     {
         /// <summary>
         /// Gets or sets the name of the database server to use.

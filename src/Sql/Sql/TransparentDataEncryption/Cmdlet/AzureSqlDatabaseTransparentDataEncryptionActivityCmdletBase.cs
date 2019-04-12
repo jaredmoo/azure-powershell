@@ -23,7 +23,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Cmdlet
 {
-    public abstract class AzureSqlDatabaseTransparentDataEncryptionActivityCmdletBase : AzureSqlCmdletBase<IEnumerable<AzureSqlDatabaseTransparentDataEncryptionActivityModel>, AzureSqlDatabaseTransparentDataEncryptionAdapter>
+    public abstract class AzureSqlDatabaseTransparentDataEncryptionActivityCmdletBase : AzureSqlCmdletResourceGroupBase<IEnumerable<AzureSqlDatabaseTransparentDataEncryptionActivityModel>, AzureSqlDatabaseTransparentDataEncryptionAdapter>
     {
         /// <summary>
         /// Gets or sets the name of the Azure Sql server to use

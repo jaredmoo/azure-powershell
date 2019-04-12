@@ -26,7 +26,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Cmdlet
 {
-    public abstract class AzureSqlManagedDatabaseBackupCmdletBase<TModel> : AzureSqlCmdletBase<TModel, AzureSqlManagedDatabaseBackupAdapter>
+    public abstract class AzureSqlManagedDatabaseBackupCmdletBase<TModel> : AzureSqlCmdletResourceGroupBase<TModel, AzureSqlManagedDatabaseBackupAdapter>
     {
         /// <summary>
         /// The expected number of segments in a short term retention policy resource id.

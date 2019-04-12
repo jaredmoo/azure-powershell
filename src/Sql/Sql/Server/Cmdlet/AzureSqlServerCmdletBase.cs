@@ -21,7 +21,7 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
 {
-    public abstract class AzureSqlServerCmdletBase : AzureSqlCmdletBase<IEnumerable<AzureSqlServerModel>, AzureSqlServerAdapter>
+    public abstract class AzureSqlServerCmdletBase : AzureSqlCmdletResourceGroupBase<IEnumerable<AzureSqlServerModel>, AzureSqlServerAdapter>
     {
         /// <summary>
         /// Intializes the model adapter

@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Sql.Advisor.Cmdlet
     /// <summary>
     /// The base class of cmdlets for Azure SQL ElasticPool Advisor
     /// </summary>
-    public abstract class AzureSqlElasticPoolAdvisorCmdletBase : AzureSqlCmdletBase<IEnumerable<AzureSqlElasticPoolAdvisorModel>, AzureSqlElasticPoolAdvisorAdapter>
+    public abstract class AzureSqlElasticPoolAdvisorCmdletBase : AzureSqlCmdletResourceGroupBase<IEnumerable<AzureSqlElasticPoolAdvisorModel>, AzureSqlElasticPoolAdvisorAdapter>
     {
         /// <summary>
         /// Gets or sets the name of the server to use.

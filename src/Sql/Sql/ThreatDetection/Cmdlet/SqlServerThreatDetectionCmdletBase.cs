@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Cmdlet
     /// <summary>
     /// The base class for all Azure Sql Database security Management Cmdlets
     /// </summary>
-    public abstract class SqlServerThreatDetectionCmdletBase : AzureSqlCmdletBase<ServerThreatDetectionPolicyModel, SqlThreatDetectionAdapter>
+    public abstract class SqlServerThreatDetectionCmdletBase : AzureSqlCmdletResourceGroupBase<ServerThreatDetectionPolicyModel, SqlThreatDetectionAdapter>
     {
         /// <summary>
         /// Gets or sets the name of the database server to use.

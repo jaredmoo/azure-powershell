@@ -25,7 +25,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Cmdlet
 {
     public abstract class AzureSqlDeletedManagedDatabaseBackupCmdletBase
-        : AzureSqlCmdletBase<IEnumerable<AzureSqlDeletedManagedDatabaseBackupModel>, AzureSqlManagedDatabaseBackupAdapter>
+        : AzureSqlCmdletResourceGroupBase<IEnumerable<AzureSqlDeletedManagedDatabaseBackupModel>, AzureSqlManagedDatabaseBackupAdapter>
     {
 
         /// <summary>

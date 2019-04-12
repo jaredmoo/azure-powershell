@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
     /// <summary>
     /// The base class for sync agent cmdlets
     /// </summary>
-    public abstract class AzureSqlSyncAgentCmdletBase : AzureSqlCmdletBase<IEnumerable<AzureSqlSyncAgentModel>, AzureSqlDataSyncAdapter>
+    public abstract class AzureSqlSyncAgentCmdletBase : AzureSqlCmdletResourceGroupBase<IEnumerable<AzureSqlSyncAgentModel>, AzureSqlDataSyncAdapter>
     {
         /// <summary>
         /// Gets or sets the name of the database server to use.

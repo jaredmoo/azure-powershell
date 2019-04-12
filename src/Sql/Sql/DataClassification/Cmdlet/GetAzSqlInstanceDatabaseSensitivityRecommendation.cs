@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Sql.DataClassification.Cmdlet
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstanceDatabaseSensitivityRecommendation",
         DefaultParameterSetName = DataClassificationCommon.DatabaseObjectParameterSet),
         OutputType(typeof(ManagedDatabaseSensitivityClassificationModel))]
-    public class GetAzSqlInstanceDatabaseSensitivityRecommendation : AzureSqlCmdletBase<ManagedDatabaseSensitivityClassificationModel, DataClassificationAdapter>
+    public class GetAzSqlInstanceDatabaseSensitivityRecommendation : AzureSqlCmdletResourceGroupBase<ManagedDatabaseSensitivityClassificationModel, DataClassificationAdapter>
     {
         [Parameter(
             ParameterSetName = DataClassificationCommon.DatabaseParameterSet,

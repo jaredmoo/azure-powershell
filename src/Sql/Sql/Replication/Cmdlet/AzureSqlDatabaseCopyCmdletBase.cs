@@ -23,7 +23,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
 {
-    public abstract class AzureSqlDatabaseCopyCmdletBase : AzureSqlCmdletBase<IEnumerable<AzureSqlDatabaseCopyModel>, AzureSqlDatabaseReplicationAdapter>
+    public abstract class AzureSqlDatabaseCopyCmdletBase : AzureSqlCmdletResourceGroupBase<IEnumerable<AzureSqlDatabaseCopyModel>, AzureSqlDatabaseReplicationAdapter>
     {
         /// <summary>
         /// Gets or sets the name of the Azure SQL Server to use.

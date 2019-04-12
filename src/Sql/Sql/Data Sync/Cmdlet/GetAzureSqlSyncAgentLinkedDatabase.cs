@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
     /// Cmdlet to list all the databases connected by a specified sync agent.  
     /// </summary>
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlSyncAgentLinkedDatabase",ConfirmImpact = ConfirmImpact.None), OutputType(typeof(AzureSqlSyncAgentLinkedDatabaseModel))]
-    public class GetAzureSqlSyncAgentSqlServerDatabase : AzureSqlCmdletBase<IEnumerable<AzureSqlSyncAgentLinkedDatabaseModel>, AzureSqlDataSyncAdapter>
+    public class GetAzureSqlSyncAgentSqlServerDatabase : AzureSqlCmdletResourceGroupBase<IEnumerable<AzureSqlSyncAgentLinkedDatabaseModel>, AzureSqlDataSyncAdapter>
     {
         /// <summary>
         /// Gets or sets the name of the database server to use.

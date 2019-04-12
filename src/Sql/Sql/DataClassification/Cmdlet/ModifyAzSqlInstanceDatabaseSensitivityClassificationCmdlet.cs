@@ -20,7 +20,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.DataClassification.Cmdlet
 {
-    public abstract class ModifyAzSqlInstanceDatabaseSensitivityClassificationCmdlet : AzureSqlCmdletBase<ManagedDatabaseSensitivityClassificationModel, DataClassificationAdapter>
+    public abstract class ModifyAzSqlInstanceDatabaseSensitivityClassificationCmdlet : AzureSqlCmdletResourceGroupBase<ManagedDatabaseSensitivityClassificationModel, DataClassificationAdapter>
     {
         [Parameter(
             ParameterSetName = DataClassificationCommon.ColumnParameterSet,

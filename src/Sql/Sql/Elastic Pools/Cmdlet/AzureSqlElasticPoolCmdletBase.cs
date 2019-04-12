@@ -23,7 +23,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
 {
-    public abstract class AzureSqlElasticPoolCmdletBase : AzureSqlCmdletBase<IEnumerable<AzureSqlElasticPoolModel>, AzureSqlElasticPoolAdapter>
+    public abstract class AzureSqlElasticPoolCmdletBase : AzureSqlCmdletResourceGroupBase<IEnumerable<AzureSqlElasticPoolModel>, AzureSqlElasticPoolAdapter>
     {
         // Some const variables used by SetAzureSqlElasticPool and NewAzureSqlElasticPool cmdlet
         public const string DtuPoolParameterSet = "DtuBasedPool";

@@ -25,7 +25,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
 {
     public abstract class AzureSqlDeletedDatabaseBackupCmdletBase
-        : AzureSqlCmdletBase<IEnumerable<AzureSqlDeletedDatabaseBackupModel>, AzureSqlDatabaseBackupAdapter>
+        : AzureSqlCmdletResourceGroupBase<IEnumerable<AzureSqlDeletedDatabaseBackupModel>, AzureSqlDatabaseBackupAdapter>
     {
         /// <summary>
         /// Gets or sets the name of the database server to use.

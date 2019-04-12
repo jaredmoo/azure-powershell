@@ -25,7 +25,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Sql.ServerDisasterRecoveryConfiguration.Cmdlet
 {
     public abstract class AzureSqlServerDisasterRecoveryConfigurationActivityCmdletBase
-        : AzureSqlCmdletBase<IEnumerable<AzureSqlServerDisasterRecoveryConfigurationActivityModel>, AzureSqlServerDisasterRecoveryConfigurationAdapter>
+        : AzureSqlCmdletResourceGroupBase<IEnumerable<AzureSqlServerDisasterRecoveryConfigurationActivityModel>, AzureSqlServerDisasterRecoveryConfigurationAdapter>
     {
         /// <summary>
         /// Gets or sets the name of the server to use.

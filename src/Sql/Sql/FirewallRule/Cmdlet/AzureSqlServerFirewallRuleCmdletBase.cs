@@ -23,7 +23,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.FirewallRule.Cmdlet
 {
-    public abstract class AzureSqlServerFirewallRuleCmdletBase : AzureSqlCmdletBase<IEnumerable<AzureSqlServerFirewallRuleModel>, AzureSqlServerFirewallRuleAdapter>
+    public abstract class AzureSqlServerFirewallRuleCmdletBase : AzureSqlCmdletResourceGroupBase<IEnumerable<AzureSqlServerFirewallRuleModel>, AzureSqlServerFirewallRuleAdapter>
     {
         /// <summary>
         /// Gets or sets the name of the Azure Sql Database server to use

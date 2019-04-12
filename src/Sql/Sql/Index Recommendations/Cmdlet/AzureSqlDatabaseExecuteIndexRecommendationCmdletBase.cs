@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Sql.Cmdlet
     /// <summary>
     /// The base class of cmdlets for Azure SQL Recommended Index
     /// </summary>
-    public abstract class AzureSqlDatabaseExecuteIndexRecommendationCmdletBase : AzureSqlCmdletBase<IndexRecommendation, AzureSqlDatabaseIndexRecommendationAdapter>
+    public abstract class AzureSqlDatabaseExecuteIndexRecommendationCmdletBase : AzureSqlCmdletResourceGroupBase<IndexRecommendation, AzureSqlDatabaseIndexRecommendationAdapter>
     {
         /// <summary>
         /// String constants for different error states.

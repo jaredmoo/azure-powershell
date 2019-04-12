@@ -23,7 +23,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
 {
-    public abstract class AzureSqlFailoverGroupCmdletBase : AzureSqlCmdletBase<IEnumerable<AzureSqlFailoverGroupModel>, AzureSqlFailoverGroupAdapter>
+    public abstract class AzureSqlFailoverGroupCmdletBase : AzureSqlCmdletResourceGroupBase<IEnumerable<AzureSqlFailoverGroupModel>, AzureSqlFailoverGroupAdapter>
     {
         /// <summary>
         /// Initializes the Azure Sql Failover Group Adapter

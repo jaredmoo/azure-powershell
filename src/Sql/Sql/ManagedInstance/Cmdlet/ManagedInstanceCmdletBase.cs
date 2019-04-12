@@ -21,7 +21,7 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
 {
-    public abstract class ManagedInstanceCmdletBase : AzureSqlCmdletBase<IEnumerable<AzureSqlManagedInstanceModel>, AzureSqlManagedInstanceAdapter>
+    public abstract class ManagedInstanceCmdletBase : AzureSqlCmdletResourceGroupBase<IEnumerable<AzureSqlManagedInstanceModel>, AzureSqlManagedInstanceAdapter>
     {
         /// <summary>
         /// Intializes the model adapter

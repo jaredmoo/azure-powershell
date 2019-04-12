@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
 {
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabaseExpanded", SupportsShouldProcess = true,ConfirmImpact = ConfirmImpact.None)]
     [OutputType(typeof(AzureSqlDatabaseModelExpanded))]
-    public class GetAzureSqlDatabaseExpanded : AzureSqlCmdletBase<IEnumerable<AzureSqlDatabaseModelExpanded>, AzureSqlDatabaseAdapter>
+    public class GetAzureSqlDatabaseExpanded : AzureSqlCmdletResourceGroupBase<IEnumerable<AzureSqlDatabaseModelExpanded>, AzureSqlDatabaseAdapter>
     {
         /// <summary>
         /// Gets or sets the name of the database server to use.

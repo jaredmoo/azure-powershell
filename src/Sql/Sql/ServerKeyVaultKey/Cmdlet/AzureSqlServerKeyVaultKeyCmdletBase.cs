@@ -23,7 +23,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Sql.ServerKeyVaultKey.Cmdlet
 {
-    public abstract class AzureSqlServerKeyVaultKeyCmdletBase : AzureSqlCmdletBase<IEnumerable<AzureSqlServerKeyVaultKeyModel>, AzureSqlServerKeyVaultKeyAdapter>
+    public abstract class AzureSqlServerKeyVaultKeyCmdletBase : AzureSqlCmdletResourceGroupBase<IEnumerable<AzureSqlServerKeyVaultKeyModel>, AzureSqlServerKeyVaultKeyAdapter>
     {
         /// <summary>
         /// Gets or sets the name of the Azure Sql server to use

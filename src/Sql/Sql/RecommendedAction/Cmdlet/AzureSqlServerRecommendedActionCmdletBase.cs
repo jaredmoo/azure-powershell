@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Sql.RecommendedAction.Cmdlet
     /// <summary>
     /// The base class of cmdlets for Azure SQL Server Recommended Action
     /// </summary>
-    public abstract class AzureSqlServerRecommendedActionCmdletBase : AzureSqlCmdletBase<IEnumerable<AzureSqlServerRecommendedActionModel>, AzureSqlServerRecommendedActionAdapter>
+    public abstract class AzureSqlServerRecommendedActionCmdletBase : AzureSqlCmdletResourceGroupBase<IEnumerable<AzureSqlServerRecommendedActionModel>, AzureSqlServerRecommendedActionAdapter>
     {
         /// <summary>
         /// Gets or sets the name of the server to use.

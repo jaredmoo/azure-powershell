@@ -24,7 +24,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Sql.DatabaseActivation.Cmdlet
 {
     public abstract class AzureSqlDatabaseActivationCmdletBase
-        : AzureSqlCmdletBase<IEnumerable<AzureSqlDatabaseModel>, AzureSqlDatabaseActivationAdapter>
+        : AzureSqlCmdletResourceGroupBase<IEnumerable<AzureSqlDatabaseModel>, AzureSqlDatabaseActivationAdapter>
     {
         /// <summary>
         /// Gets or sets the name of the Azure SQL Server to use.

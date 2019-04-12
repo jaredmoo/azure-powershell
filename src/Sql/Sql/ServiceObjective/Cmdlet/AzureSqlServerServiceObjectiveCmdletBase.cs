@@ -25,7 +25,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Sql.ServiceObjective.Cmdlet
 {
     public abstract class AzureSqlServerServiceObjectiveCmdletBase
-        : AzureSqlCmdletBase<IEnumerable<AzureSqlServerServiceObjectiveModel>, AzureSqlServerServiceObjectiveAdapter>
+        : AzureSqlCmdletResourceGroupBase<IEnumerable<AzureSqlServerServiceObjectiveModel>, AzureSqlServerServiceObjectiveAdapter>
     {
         /// <summary>
         /// Gets or sets the name of the database server to use.

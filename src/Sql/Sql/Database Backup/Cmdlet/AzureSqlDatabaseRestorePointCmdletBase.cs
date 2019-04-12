@@ -24,7 +24,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
 {
     public abstract class AzureSqlDatabaseRestorePointCmdletBase
-        : AzureSqlCmdletBase<IEnumerable<AzureSqlDatabaseRestorePointModel>, AzureSqlDatabaseBackupAdapter>
+        : AzureSqlCmdletResourceGroupBase<IEnumerable<AzureSqlDatabaseRestorePointModel>, AzureSqlDatabaseBackupAdapter>
     {
         /// <summary>
         /// Gets or sets the name of the database server to use.

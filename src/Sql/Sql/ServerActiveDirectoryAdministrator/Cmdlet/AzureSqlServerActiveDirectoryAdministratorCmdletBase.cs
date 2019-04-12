@@ -23,7 +23,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Cmdlet
 {
-    public abstract class AzureSqlServerActiveDirectoryAdministratorCmdletBase : AzureSqlCmdletBase<IEnumerable<AzureSqlServerActiveDirectoryAdministratorModel>, AzureSqlServerActiveDirectoryAdministratorAdapter>
+    public abstract class AzureSqlServerActiveDirectoryAdministratorCmdletBase : AzureSqlCmdletResourceGroupBase<IEnumerable<AzureSqlServerActiveDirectoryAdministratorModel>, AzureSqlServerActiveDirectoryAdministratorAdapter>
     {
         /// <summary>
         /// Gets or sets the name of the Azure SQL Server that contains the Azure Active Directory administrator.

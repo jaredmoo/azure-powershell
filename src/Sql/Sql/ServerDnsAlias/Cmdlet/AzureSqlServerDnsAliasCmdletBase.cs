@@ -22,7 +22,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Sql.ServerDnsAlias.Cmdlet
 {
-	public abstract class AzureSqlServerDnsAliasCmdletBase : AzureSqlCmdletBase<IEnumerable<AzureSqlServerDnsAliasModel>, AzureSqlServerDnsAliasAdapter>
+	public abstract class AzureSqlServerDnsAliasCmdletBase : AzureSqlCmdletResourceGroupBase<IEnumerable<AzureSqlServerDnsAliasModel>, AzureSqlServerDnsAliasAdapter>
 	{
 		/// <summary>
 		/// Gets or sets the name of the Azure Sql Server to use

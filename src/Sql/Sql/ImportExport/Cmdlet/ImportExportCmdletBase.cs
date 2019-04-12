@@ -24,7 +24,7 @@ using System.Security;
 
 namespace Microsoft.Azure.Commands.Sql.ImportExport.Cmdlet
 {
-    public abstract class ImportExportCmdletBase : AzureSqlCmdletBase<AzureSqlDatabaseImportExportBaseModel, ImportExportDatabaseAdapter>
+    public abstract class ImportExportCmdletBase : AzureSqlCmdletResourceGroupBase<AzureSqlDatabaseImportExportBaseModel, ImportExportDatabaseAdapter>
     {
         /// <summary>
         /// Gets or sets the name of the database server to use.

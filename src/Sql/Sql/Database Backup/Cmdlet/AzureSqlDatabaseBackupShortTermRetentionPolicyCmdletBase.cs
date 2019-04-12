@@ -24,7 +24,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
 {
-    public abstract class AzureSqlDatabaseBackupShortTermRetentionPolicyCmdletBase : AzureSqlCmdletBase<IEnumerable<AzureSqlDatabaseBackupShortTermRetentionPolicyModel>, AzureSqlDatabaseBackupAdapter>
+    public abstract class AzureSqlDatabaseBackupShortTermRetentionPolicyCmdletBase : AzureSqlCmdletResourceGroupBase<IEnumerable<AzureSqlDatabaseBackupShortTermRetentionPolicyModel>, AzureSqlDatabaseBackupAdapter>
     {
         /// <summary>
         /// The expected number of segments in a short term retention policy resource id.

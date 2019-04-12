@@ -23,7 +23,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.ServerCommunicationLink.Cmdlet
 {
-    public abstract class AzureSqlServerCommunicationLinkCmdletBase : AzureSqlCmdletBase<IEnumerable<AzureSqlServerCommunicationLinkModel>, AzureSqlServerCommunicationLinkAdapter>
+    public abstract class AzureSqlServerCommunicationLinkCmdletBase : AzureSqlCmdletResourceGroupBase<IEnumerable<AzureSqlServerCommunicationLinkModel>, AzureSqlServerCommunicationLinkAdapter>
     {
         /// <summary>
         /// Gets or sets the name of the server to use.

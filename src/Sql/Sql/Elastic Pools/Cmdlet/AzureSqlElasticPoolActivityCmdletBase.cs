@@ -24,7 +24,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
 {
-    public abstract class AzureSqlElasticPoolActivityCmdletBase : AzureSqlCmdletBase<IEnumerable<AzureSqlElasticPoolActivityModel>, AzureSqlElasticPoolAdapter>
+    public abstract class AzureSqlElasticPoolActivityCmdletBase : AzureSqlCmdletResourceGroupBase<IEnumerable<AzureSqlElasticPoolActivityModel>, AzureSqlElasticPoolAdapter>
     {
         /// <summary>
         /// Gets or sets the name of the database server to use.

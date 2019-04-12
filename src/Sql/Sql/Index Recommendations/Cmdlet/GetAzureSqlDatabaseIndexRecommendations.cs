@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.Sql.Cmdlet
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabaseIndexRecommendation", ConfirmImpact = ConfirmImpact.None, SupportsShouldProcess = true)]
     [OutputType(typeof(IndexRecommendation))]
     [Alias("Get-AzSqlDatabaseIndexRecommendations")]
-    public class GetAzureSqlDatabaseIndexRecommendations : AzureSqlCmdletBase<IEnumerable<IndexRecommendation>, AzureSqlDatabaseIndexRecommendationAdapter>
+    public class GetAzureSqlDatabaseIndexRecommendations : AzureSqlCmdletResourceGroupBase<IEnumerable<IndexRecommendation>, AzureSqlDatabaseIndexRecommendationAdapter>
     {
         /// <summary>
         /// Gets or sets the name of the server to use.

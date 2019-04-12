@@ -22,7 +22,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.VirtualNetworkRule.Cmdlet
 {
-    public abstract class AzureSqlServerVirtualNetworkRuleCmdletBase : AzureSqlCmdletBase<IEnumerable<AzureSqlServerVirtualNetworkRuleModel>, AzureSqlServerVirtualNetworkRuleAdapter>
+    public abstract class AzureSqlServerVirtualNetworkRuleCmdletBase : AzureSqlCmdletResourceGroupBase<IEnumerable<AzureSqlServerVirtualNetworkRuleModel>, AzureSqlServerVirtualNetworkRuleAdapter>
     {
         /// <summary>
         /// Gets or sets the name of the Azure Sql Server to use

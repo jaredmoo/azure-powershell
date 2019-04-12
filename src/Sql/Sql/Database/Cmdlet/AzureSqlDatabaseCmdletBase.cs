@@ -24,7 +24,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
 {
-    public abstract class AzureSqlDatabaseCmdletBase<TModel> : AzureSqlCmdletBase<TModel, AzureSqlDatabaseAdapter>
+    public abstract class AzureSqlDatabaseCmdletBase<TModel> : AzureSqlCmdletResourceGroupBase<TModel, AzureSqlDatabaseAdapter>
     {
         // Some const variables used by SetAzureSqlDatabase and NewAzureSqlDatabase cmdlet
         public const string DtuDatabaseParameterSet = "DtuBasedDatabase";

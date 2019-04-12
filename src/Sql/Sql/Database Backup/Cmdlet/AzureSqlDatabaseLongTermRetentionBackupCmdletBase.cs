@@ -25,7 +25,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
 {
     public abstract class AzureSqlDatabaseLongTermRetentionBackupCmdletBase :
-        AzureSqlCmdletBase<IEnumerable<AzureSqlDatabaseLongTermRetentionBackupModel>, AzureSqlDatabaseBackupAdapter>
+        AzureSqlCmdletResourceGroupBase<IEnumerable<AzureSqlDatabaseLongTermRetentionBackupModel>, AzureSqlDatabaseBackupAdapter>
     {
         /// <summary>
         /// Override to remove from parameters.

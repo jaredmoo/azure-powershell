@@ -22,7 +22,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
 {
-    public abstract class SqlServerAuditingSettingsCmdletBase : AzureSqlCmdletBase<ServerBlobAuditingSettingsModel, SqlAuditAdapter>
+    public abstract class SqlServerAuditingSettingsCmdletBase : AzureSqlCmdletResourceGroupBase<ServerBlobAuditingSettingsModel, SqlAuditAdapter>
     {
         [Parameter(
             ParameterSetName = DefinitionsCommon.BlobStorageParameterSetName,

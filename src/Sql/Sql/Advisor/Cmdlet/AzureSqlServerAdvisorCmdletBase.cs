@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Sql.Advisor.Cmdlet
     /// <summary>
     /// The base class of cmdlets for Azure SQL Server Advisor
     /// </summary>
-    public abstract class AzureSqlServerAdvisorCmdletBase : AzureSqlCmdletBase<IEnumerable<AzureSqlServerAdvisorModel>, AzureSqlServerAdvisorAdapter>
+    public abstract class AzureSqlServerAdvisorCmdletBase : AzureSqlCmdletResourceGroupBase<IEnumerable<AzureSqlServerAdvisorModel>, AzureSqlServerAdvisorAdapter>
     {
         /// <summary>
         /// Gets or sets the name of the server to use.

@@ -19,7 +19,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
 {
-    public abstract class AzureSqlRecoverableManagedDatabaseCmdletBase<TModel> : AzureSqlCmdletBase<TModel, AzureSqlRecoverableManagedDatabaseAdapter>
+    public abstract class AzureSqlRecoverableManagedDatabaseCmdletBase<TModel> : AzureSqlCmdletResourceGroupBase<TModel, AzureSqlRecoverableManagedDatabaseAdapter>
     {
         /// <summary>
         /// Gets or sets the name of the managed instance to use.

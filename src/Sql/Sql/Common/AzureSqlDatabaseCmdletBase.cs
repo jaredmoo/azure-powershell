@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.Sql.Common
     /// <summary>
     /// The base class for all Azure Sql database cmdlets
     /// </summary>
-    public abstract class AzureSqlDatabaseCmdletBase<M, A> : AzureSqlCmdletBase<M, A>
+    public abstract class AzureSqlDatabaseCmdletBase<M, A> : AzureSqlCmdletResourceGroupBase<M, A>
     {
         /// <summary>
         /// Gets or sets the name of the database server to use.

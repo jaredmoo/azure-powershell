@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Cmdlet
     /// </summary>
     [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlServerTransparentDataEncryptionCertificate", ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true, DefaultParameterSetName = DefaultParameterSet)]
     [OutputType(typeof(bool))]
-    public class AddAzureRmSqlServerTransparentDataEncryptionCertificate : AzureSqlCmdletBase<IEnumerable<AzureRmSqlServerTransparentDataEncryptionCertificateModel>, AzureSqlDatabaseTransparentDataEncryptionArmAdapter>
+    public class AddAzureRmSqlServerTransparentDataEncryptionCertificate : AzureSqlCmdletResourceGroupBase<IEnumerable<AzureRmSqlServerTransparentDataEncryptionCertificateModel>, AzureSqlDatabaseTransparentDataEncryptionArmAdapter>
     {
         private const string PrivateBlobHelpText =
             "The Private blob for Transparent Data Encryption Certificate. For detailed instructions on how to generate the blob go to https://aka.ms/tdecertprep";

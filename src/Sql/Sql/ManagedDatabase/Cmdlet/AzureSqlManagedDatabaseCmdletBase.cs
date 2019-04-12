@@ -19,7 +19,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
 {
-    public abstract class AzureSqlManagedDatabaseCmdletBase<TModel> : AzureSqlCmdletBase<TModel, AzureSqlManagedDatabaseAdapter>
+    public abstract class AzureSqlManagedDatabaseCmdletBase<TModel> : AzureSqlCmdletResourceGroupBase<TModel, AzureSqlManagedDatabaseAdapter>
     {
         /// <summary>
         /// Gets or sets the name of the managed instance to use.

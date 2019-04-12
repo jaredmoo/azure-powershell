@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
     /// Cmdlet to generate a sync agent registration key for a specific sync agent
     /// </summary>
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlSyncAgentKey", SupportsShouldProcess = true,ConfirmImpact = ConfirmImpact.Medium), OutputType(typeof(AzureSqlSyncAgentKeyModel))]
-    public class NewAzureSqlSyncAgentKey : AzureSqlCmdletBase<IEnumerable<AzureSqlSyncAgentKeyModel>, AzureSqlDataSyncAdapter>
+    public class NewAzureSqlSyncAgentKey : AzureSqlCmdletResourceGroupBase<IEnumerable<AzureSqlSyncAgentKeyModel>, AzureSqlDataSyncAdapter>
     {
         /// <summary>
         /// Gets or sets the name of the database server to use.

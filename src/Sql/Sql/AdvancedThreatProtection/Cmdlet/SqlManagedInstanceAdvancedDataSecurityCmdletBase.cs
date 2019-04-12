@@ -23,7 +23,7 @@ using Microsoft.Azure.Commands.Sql.ManagedInstance.Model;
 
 namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Cmdlet
 {
-    public class SqlManagedInstanceAdvancedDataSecurityCmdletBase : AzureSqlCmdletBase<ManagedInstanceAdvancedDataSecurityPolicyModel, SqlAdvancedThreatProtectionAdapter>
+    public class SqlManagedInstanceAdvancedDataSecurityCmdletBase : AzureSqlCmdletResourceGroupBase<ManagedInstanceAdvancedDataSecurityPolicyModel, SqlAdvancedThreatProtectionAdapter>
     {
         protected const string UseParentResourceParameterSet = "UseParentResourceParameterSet";
 

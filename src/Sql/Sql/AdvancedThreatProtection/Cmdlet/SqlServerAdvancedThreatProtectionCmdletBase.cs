@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Cmdlet
     /// <summary>
     /// The base class for all Azure Sql server Advanced Threat Protection Cmdlets
     /// </summary>
-    public abstract class SqlServerAdvancedThreatProtectionCmdletBase : AzureSqlCmdletBase<ServerAdvancedThreatProtectionPolicyModel, SqlAdvancedThreatProtectionAdapter>
+    public abstract class SqlServerAdvancedThreatProtectionCmdletBase : AzureSqlCmdletResourceGroupBase<ServerAdvancedThreatProtectionPolicyModel, SqlAdvancedThreatProtectionAdapter>
     {
         protected const string UseParentResourceParameterSet = "UseParentResourceParameterSet";
 

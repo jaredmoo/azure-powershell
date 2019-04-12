@@ -12,40 +12,31 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commands.Sql.Backup.Model;
-using Microsoft.Azure.Commands.Sql.Backup.Services;
-using Microsoft.Azure.Commands.Sql.Common;
-using Microsoft.Azure.Commands.Sql.Database.Model;
-using Microsoft.Azure.Commands.Sql.Database.Services;
+using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.Azure.Commands.Sql.Services;
+using System.Management.Automation;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
-namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
+namespace Microsoft.Azure.Commands.Sql.Common
 {
-    public abstract class AzureSqlServerBackupLongTermRetentionVaultCmdletBase : 
-        AzureSqlCmdletResourceGroupBase<IEnumerable<AzureSqlServerBackupLongTermRetentionVaultModel>, AzureSqlDatabaseBackupAdapter>
+    /// <summary>
+    /// The base class for all Azure Sql cmdlets
+    /// </summary>
+    public abstract class AzureSqlCmdletResourceGroupBase<M, A> : AzureSqlCmdletBase<M, A>
     {
         /// <summary>
-        /// Gets or sets the name of the database server to use.
+        /// Gets or sets the name of the resource group to use.
         /// </summary>
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            Position = 1,
-            HelpMessage = "The name of the Azure SQL Server the database is in.")]
-        [ResourceNameCompleter("Microsoft.Sql/servers", "ResourceGroupName")]
+            Position = 0,
+            HelpMessage = "The name of the resource group.")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
-        public string ServerName { get; set; }
-
-        /// <summary>
-        /// Initializes the adapter
-        /// </summary>
-        /// <returns></returns>
-        protected override AzureSqlDatabaseBackupAdapter InitModelAdapter()
-        {
-            return new AzureSqlDatabaseBackupAdapter(DefaultProfile.DefaultContext);
-        }
+        public virtual string ResourceGroupName { get; set; }
     }
 }
