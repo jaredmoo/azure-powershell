@@ -25,8 +25,19 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Sql.ServiceObjective.Cmdlet
 {
     public abstract class AzureSqlServerServiceObjectiveCmdletBase
-        : AzureSqlCmdletResourceGroupBase<IEnumerable<AzureSqlServerServiceObjectiveModel>, AzureSqlServerServiceObjectiveAdapter>
+        : AzureSqlCmdletBase<IEnumerable<AzureSqlServerServiceObjectiveModel>, AzureSqlServerServiceObjectiveAdapter>
     {
+        /// <summary>
+        /// Gets or sets the name of the resource group to use.
+        /// </summary>
+        [Parameter(Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            Position = 0,
+            HelpMessage = "The name of the resource group.")]
+        [ResourceGroupCompleter]
+        [ValidateNotNullOrEmpty]
+        public virtual string ResourceGroupName { get; set; }
+
         /// <summary>
         /// Gets or sets the name of the database server to use.
         /// </summary>
